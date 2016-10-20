@@ -13,11 +13,11 @@ if ($_POST) {
             $standaloneCreditRequest = $_POST['standalonecredit'];
         }
         if ($standaloneCreditRequest == 'ach_Without_Token' || $standaloneCreditRequest == 'ach_With_Token' || $standaloneCreditRequest == "lookupStandaloneRequestACH" || $standaloneCreditRequest == 'cancelStandaloneRequestACH' || $standaloneCreditRequest == 'lookupStandaloneRequestACHMRN') {
-            $client = new PaysafeApiClient($paysafeApiKeyId, $paysafeApiKeySecret, Environment::TEST, "1001057430");
+            $client = new PaysafeApiClient($paysafeApiKeyId, $paysafeApiKeySecret, Environment::TEST, $paysafeAccountNumber);
         } elseif ($standaloneCreditRequest == 'eft_Without_Token' || $standaloneCreditRequest == 'eft_With_Token' || $standaloneCreditRequest == "lookupStandaloneRequestEFT" || $standaloneCreditRequest == 'cancelStandaloneRequestEFT' || $standaloneCreditRequest == 'lookupStandaloneRequestMRN') {
-            $client = new PaysafeApiClient($paysafeApiKeyId, $paysafeApiKeySecret, Environment::TEST, '1001057670');
+            $client = new PaysafeApiClient($paysafeApiKeyId, $paysafeApiKeySecret, Environment::TEST, $paysafeAccountNumber);
         } elseif ($standaloneCreditRequest == 'bacs_Without_Token' || $standaloneCreditRequest == 'bacs_With_Token' || $standaloneCreditRequest == "lookupStandaloneRequestBACS" || $standaloneCreditRequest == 'cancelStandaloneRequestBACS' || $standaloneCreditRequest == 'lookupStandaloneRequestBACSMRN') {
-            $client = new PaysafeApiClient($paysafeApiKeyId, $paysafeApiKeySecret, Environment::TEST, '1001057660');
+            $client = new PaysafeApiClient($paysafeApiKeyId, $paysafeApiKeySecret, Environment::TEST, $paysafeAccountNumber);
         } else {
             $client = new PaysafeApiClient($paysafeApiKeyId, $paysafeApiKeySecret, Environment::TEST, $paysafeAccountNumber);
         }

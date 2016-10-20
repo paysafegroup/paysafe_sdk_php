@@ -18,29 +18,29 @@ if ($_POST)
             $accountCreation = $_POST['paysafe'];
             if ($accountCreation == "ACHcreate" || $accountCreation == "ACHlookup" || $accountCreation == "ACHupdate" || $accountCreation == "ACHdelete")
             {
-                $client = new PaysafeApiClient($paysafeApiKeyId, $paysafeApiKeySecret, Environment::TEST, "1001057430");
+                $client = new PaysafeApiClient($paysafeApiKeyId, $paysafeApiKeySecret, Environment::TEST, $paysafeAccountNumber);
             } else if ($accountCreation == "EFTcreate" || $accountCreation == "EFTlookup" || $accountCreation == "EFTupdate" || $accountCreation == "EFTdelete")
             {
-                $client = new PaysafeApiClient($paysafeApiKeyId, $paysafeApiKeySecret, Environment::TEST, '1001057670');
+                $client = new PaysafeApiClient($paysafeApiKeyId, $paysafeApiKeySecret, Environment::TEST, $paysafeAccountNumber);
             } else if ($accountCreation == "BACScreate" || $accountCreation == "BACSlookup" || $accountCreation == "BACSupdate" || $accountCreation == "BACSdelete")
             {
-                $client = new PaysafeApiClient($paysafeApiKeyId, $paysafeApiKeySecret, Environment::TEST, '1001057660');
+                $client = new PaysafeApiClient($paysafeApiKeyId, $paysafeApiKeySecret, Environment::TEST, $paysafeAccountNumber);
             } else if ($accountCreation == "SEPAcreate" || $accountCreation == "SEPAlookup" || $accountCreation == "SEPAupdate" || $accountCreation == "SEPAdelete")
             {
-                $client = new PaysafeApiClient($paysafeApiKeyId, $paysafeApiKeySecret, Environment::TEST, '1001057620');
+                $client = new PaysafeApiClient($paysafeApiKeyId, $paysafeApiKeySecret, Environment::TEST, $paysafeAccountNumber);
             } else if ($accountCreation == "create_sepa_mantade" || $accountCreation == "lookup_sepa_mantade" || $accountCreation == "update_sepa_mantade" || $accountCreation == "delete_sepa_mantade")
             {
-                $client = new PaysafeApiClient($paysafeApiKeyId, "B-qa2-0-54b5374e-302d02147911306b5c6db4ad74e083803733163195c75ef902150095b4a21a5ea7f4c19b7b37aed1944490b59e785e", Environment::TEST, '1001057620');
+                $client = new PaysafeApiClient($paysafeApiKeyId, $paysafeApiKeySecret, Environment::TEST, $paysafeAccountNumber);
             } else if ($accountCreation == "create_bacs_mantade" || $accountCreation == "lookup_bacs_mantade" || $accountCreation == "update_bacs_mantade" || $accountCreation == "delete_bacs_mantade")
             {
-                $client = new PaysafeApiClient($paysafeApiKeyId, "B-qa2-0-54b5374e-302d02147911306b5c6db4ad74e083803733163195c75ef902150095b4a21a5ea7f4c19b7b37aed1944490b59e785e", Environment::TEST, '1001057660');
+                $client = new PaysafeApiClient($paysafeApiKeyId, $paysafeApiKeySecret, Environment::TEST, $paysafeAccountNumber);
             } else
             {
                 $client = new PaysafeApiClient($paysafeApiKeyId, $paysafeApiKeySecret, Environment::TEST, $paysafeAccountNumber);
             }
         } else
         {
-            $client = new PaysafeApiClient($paysafeApiKeyId, $paysafeApiKeySecret, Environment::TEST, "1001057430");
+            $client = new PaysafeApiClient($paysafeApiKeyId, $paysafeApiKeySecret, Environment::TEST, $paysafeAccountNumber);
         }
 
 

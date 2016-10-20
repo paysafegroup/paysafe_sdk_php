@@ -13,7 +13,7 @@ if ($_POST) {
         }
 
         if ($threed_secure == 'submit_enroll' || $threed_secure == 'lookup_enroll' || $threed_secure == "authentication_request" || $threed_secure == 'lookup_authentication' || $threed_secure == 'lookup_authentication_enroll' || $threed_secure == "moniter_service") {
-            $client = new PaysafeApiClient("devcentre4628", "B-qa2-0-548ef25d-302b0213119f70d83213f828bc442dfd0af3280a7b48b1021400972746f9abe438554699c8fa3617063ca4c69a", Environment::TEST, "89983472");
+            $client = new PaysafeApiClient($paysafeApiKeyId, $paysafeApiKeySecret, Environment::TEST, $paysafeAccountNumber);
         }
         if ($threed_secure == 'submit_enroll') {
             $threedsecure = $client->threeDSecureService()->enrollmentChecks(new ThreeDEnrollment(array(

@@ -18,19 +18,19 @@ if ($_POST)
             if ($submitPurchase == 'ach_without_token' || $submitPurchase == 'ach_with_token' || $submitPurchase == "lookupPurchaseRequestACH" || $submitPurchase == 'cancelPurchaseRequestACH' || $submitPurchase == 'lookupPurchaseRequestACHMRN')
             {
 
-                $client = new PaysafeApiClient($paysafeApiKeyId, $paysafeApiKeySecret, Environment::TEST, "1001057430");
+                $client = new PaysafeApiClient($paysafeApiKeyId, $paysafeApiKeySecret, Environment::TEST, $paysafeAccountNumber);
             } elseif ($submitPurchase == 'eft_without_token' || $submitPurchase == 'eft_with_token' || $submitPurchase == "lookupPurchaseRequestEFT" || $submitPurchase == 'cancelPurchaseRequestEFT' || $submitPurchase == 'lookupPurchaseRequestEFTMRN')
             {
 
-                $client = new PaysafeApiClient($paysafeApiKeyId, $paysafeApiKeySecret, Environment::TEST, '1001057670');
+                $client = new PaysafeApiClient($paysafeApiKeyId, $paysafeApiKeySecret, Environment::TEST, $paysafeAccountNumber);
             } elseif ($submitPurchase == 'bacs_without_token' || $submitPurchase == 'bacs_with_token' || $submitPurchase == "lookupPurchaseRequestBACS" || $submitPurchase == 'cancelPurchaseRequestBACS' || $submitPurchase == 'lookupPurchaseRequestBACSMRN')
             {
 
-                $client = new PaysafeApiClient($paysafeApiKeyId, $paysafeApiKeySecret, Environment::TEST, '1001057660');
+                $client = new PaysafeApiClient($paysafeApiKeyId, $paysafeApiKeySecret, Environment::TEST, $paysafeAccountNumber);
             } elseif ($submitPurchase == 'sepa_without_token' || $submitPurchase == 'sepa_with_token' || $submitPurchase == "lookupPurchaseRequestSEPA" || $submitPurchase == 'cancelPurchaseRequestSEPA' || $submitPurchase == 'lookupPurchaseRequestSEPAMRN')
             {
 
-                $client = new PaysafeApiClient($paysafeApiKeyId, $paysafeApiKeySecret, Environment::TEST, '1001057620');
+                $client = new PaysafeApiClient($paysafeApiKeyId, $paysafeApiKeySecret, Environment::TEST, $paysafeAccountNumber);
             } else
             {
                 $client = new PaysafeApiClient($paysafeApiKeyId, $paysafeApiKeySecret, Environment::TEST, $paysafeAccountNumber);
