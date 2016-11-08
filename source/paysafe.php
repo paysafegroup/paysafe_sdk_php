@@ -18,7 +18,6 @@
  * OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
  */
 
- echo "file included.";
 if (version_compare(PHP_VERSION, '5.3', '<')) {
     /**
 	 * 5.3 Features Used:

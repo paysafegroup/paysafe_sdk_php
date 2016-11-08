@@ -38,7 +38,7 @@ class CardPaymentService
 	 *
 	 * @param \OptimalPayments\OptimalApiClient $client
 	 */
-    public function __construct(OptimalPaymentsApiClient $client)
+    public function __construct(PaysafeApiClient $client)
     {
         $this->client = $client;
     }
