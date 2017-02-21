@@ -89,10 +89,10 @@ class PaysafeApiClient
     /**
 	 * Instantiates a new net banx api client.
 	 *
-	 * @param type $keyID
-	 * @param type $keyPassword
-	 * @param type $environment \OptimalPayments\Environment::TEST (default) or \OptimalPayments\Environment::LIVE
-	 * @param type $account
+	 * @param string $keyID
+	 * @param string $keyPassword
+	 * @param string $environment \OptimalPayments\Environment::TEST (default) or \OptimalPayments\Environment::LIVE
+	 * @param string $account
 	 * @throws OptimalException
 	 */
     public function __construct($keyID, $keyPassword, $environment = null, $account = null)
