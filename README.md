@@ -18,6 +18,12 @@ This SDK requires PHP >= 5.3 and cURL to be installed.
 
 This SDK requires that you can complete an SSL connection using cURL to the API endpoints from within your hosting environment . Any cURL errors returned will require you to complete connectivity troubleshooting within your hosting environment. See cURL error codes for assistance: http://curl.haxx.se/libcurl/c/libcurl-errors.html
 
+### Composer
+
+```sh
+$ composer require paysafegroup/paysafe_sdk_php
+```
+
 ## Usage
 
 ### Running Sample Code
