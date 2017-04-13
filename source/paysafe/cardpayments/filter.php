@@ -26,7 +26,7 @@ namespace Paysafe\CardPayments;
  * @property string $startDate
  * @property string $endDate
  */
-class Filter extends JSONObject
+class Filter extends \Paysafe\JSONObject
 {
     protected static $fieldTypes = array(
          'limit' => 'int',
