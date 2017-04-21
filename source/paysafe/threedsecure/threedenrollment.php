@@ -25,18 +25,18 @@ namespace Paysafe\ThreeDSecure;
  * @property string $merchantRefNum
  * @property int $amount
  * @property string $currency
- * @property \OptimalPayments\ThreeDSecure\Card $card
+ * @property \Paysafe\ThreeDSecure\Card $card
  * @property string $customerIp
  * @property string $userAgent
  * @property string $acceptHeader
  * @property string $merchantUrl
  * @property string $txnTime
- * @property \OptimalPayments\Error $error
+ * @property \Paysafe\Error $error
  * @property string $status
  * @property string $acsURL
  * @property string $paReq
  * @property string $eci
- * @property \OptimalPayments\ThreeDSecure\profile $threeDEnrollment
+ * @property \Paysafe\ThreeDSecure\profile $threeDEnrollment
  */
 
 class ThreeDEnrollment extends \Paysafe\JSONObject

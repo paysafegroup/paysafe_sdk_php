@@ -33,8 +33,8 @@ namespace Paysafe\CustomerVault;
  * @property string $phone
  * @property bool $defaultshippingAddressIndicator
  * @property string $profileID
- * @property \OptimalPayments\Error $error
- * @property \OptimalPayments\Link[] $links
+ * @property \Paysafe\Error $error
+ * @property \Paysafe\Link[] $links
  */
 class Address extends \Paysafe\JSONObject
 {

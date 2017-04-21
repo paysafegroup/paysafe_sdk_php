@@ -27,31 +27,31 @@ namespace Paysafe\CardPayments;
  * @property bool $settleWithAuth
  * @property int $availableToSettle
  * @property string $childAccountNum
- * @property \OptimalPayments\CardPayments\Card $card
- * @property \OptimalPayments\CardPayments\Authentication $authentication
+ * @property \Paysafe\CardPayments\Card $card
+ * @property \Paysafe\CardPayments\Authentication $authentication
  * @property string $authCode
- * @property \OptimalPayments\CardPayments\Profile $profile
- * @property \OptimalPayments\CardPayments\BillingDetails $billingDetails
- * @property \OptimalPayments\CardPayments\ShippingDetails $shippingDetails
+ * @property \Paysafe\CardPayments\Profile $profile
+ * @property \Paysafe\CardPayments\BillingDetails $billingDetails
+ * @property \Paysafe\CardPayments\ShippingDetails $shippingDetails
  * @property string $recurring
  * @property string $customerIp
  * @property bool $dupCheck
  * @property string[] $keywords
- * @property \OptimalPayments\CardPayments\MerchantDescriptor $merchantDescriptor
- * @property \OptimalPayments\CardPayments\AccordD $accordD
+ * @property \Paysafe\CardPayments\MerchantDescriptor $merchantDescriptor
+ * @property \Paysafe\CardPayments\AccordD $accordD
  * @property string $description
- * @property \OptimalPayments\CardPayments\MasterPass
+ * @property \Paysafe\CardPayments\MasterPass
  * @property string $txnTime
  * @property string $currencyCode
  * @property string $avsResponse
  * @property string $cvvVerication
  * @property string $status
  * @property int[] $riskReasonCode
- * @property \OptimalPayments\CardPayments\AcquirerResponse $acquirerRresponse
- * @property \OptimalPayments\CardPayments\VisaAdditionalAuthData $visaAdditionalAuthData
- * @property \OptimalPayments\CardPayments\Settlement $settlements
- * @property \OptimalPayments\Error $error
- * @property \OptimalPayments\Link[] $links
+ * @property \Paysafe\CardPayments\AcquirerResponse $acquirerRresponse
+ * @property \Paysafe\CardPayments\VisaAdditionalAuthData $visaAdditionalAuthData
+ * @property \Paysafe\CardPayments\Settlement $settlements
+ * @property \Paysafe\Error $error
+ * @property \Paysafe\Link[] $links
  */
 class Authorization extends \Paysafe\JSONObject implements \Paysafe\Pageable
 {

@@ -23,7 +23,7 @@ namespace Paysafe;
 /**
  * @property uri $uri
  * @property string $method
- * @property \OptimalPayments\JSONObject $body
+ * @property \Paysafe\JSONObject $body
  * @property array $queryStr
  */
 class Request implements \ArrayAccess
@@ -34,7 +34,7 @@ class Request implements \ArrayAccess
     const PUT = 'PUT';
 
     /**
-	 * Stores the data to be submitted by the netbanx api client.
+	 * Stores the data to be submitted by the paysafe api client.
 	 *
 	 * @var array
 	 */
@@ -47,11 +47,11 @@ class Request implements \ArrayAccess
     );
 
     /**
-	 * Build url for the netbanx api client.
+	 * Build url for the paysafe api client.
 	 *
 	 * @param string $apiEndPoint
 	 * @return string
-	 * @throws OptimalException if the url has been set, and does not match the endpoint.
+	 * @throws PaysafeException if the url has been set, and does not match the endpoint.
 	 */
     public function buildUrl($apiEndPoint)
     {
@@ -67,8 +67,8 @@ class Request implements \ArrayAccess
     /**
 	 * Initialize the request.
 	 *
-	 * @param \OptimalPayments\Link $options
-	 * @throws OptimalException
+	 * @param \Paysafe\Link $options
+	 * @throws PaysafeException
 	 */
     public function __construct($options)
     {
@@ -103,7 +103,7 @@ class Request implements \ArrayAccess
 	 *
 	 * @param string $name
 	 * @param mixed $value
-	 * @throws OptimalException
+	 * @throws PaysafeException
 	 */
     public function __set($name, $value)
     {

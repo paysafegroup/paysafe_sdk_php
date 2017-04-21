@@ -22,8 +22,8 @@ namespace Paysafe;
 
 class Environment
 {
-    const TEST = "OPTIMAL:TEST";
-    const LIVE = "NETBANX:LIVE";
+    const TEST = "PAYSAFE:TEST";
+    const LIVE = "PAYSAFE:LIVE";
 
     public function __construct()
     {

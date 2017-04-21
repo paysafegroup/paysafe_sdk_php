@@ -29,9 +29,9 @@ namespace Paysafe\CardPayments;
  * @property string $txnTime
  * @property string $status
  * @property int[] $riskReasonCode
- * @property \OptimalPayments\CardPayments\AcquirerResponse $acquirerResponse
- * @property \OptimalPayments\Error $error
- * @property \OptimalPayments\Link[] $links
+ * @property \Paysafe\CardPayments\AcquirerResponse $acquirerResponse
+ * @property \Paysafe\Error $error
+ * @property \Paysafe\Link[] $links
  * @property string $settlementID
  *
  */

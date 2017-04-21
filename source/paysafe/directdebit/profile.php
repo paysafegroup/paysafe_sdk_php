@@ -24,7 +24,7 @@ namespace Paysafe\DirectDebit;
  * @property string $lastName
  * @property string $email
  * @property string $ssn
- * @property \OptimalPayments\DirectDebit\DateOfBirth $dateOfBirth
+ * @property \Paysafe\DirectDebit\DateOfBirth $dateOfBirth
  */
 class Profile extends \Paysafe\JSONObject
 {

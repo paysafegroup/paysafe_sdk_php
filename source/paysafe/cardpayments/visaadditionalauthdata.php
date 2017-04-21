@@ -21,7 +21,7 @@
 namespace Paysafe\CardPayments;
 
 /**
- * @property \OptimalPayments\CardPayments\DateOfBirth $recipientDateOfBirth
+ * @property \Paysafe\CardPayments\DateOfBirth $recipientDateOfBirth
  * @property string $recipientZip
  * @property string $recipientLastName
  * @property string $recipientAccountNumber

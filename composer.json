@@ -1,0 +1,24 @@
+{
+    "name": "paysafegroup/paysafe_sdk_php",
+    "type": "library",
+    "description": "PHP SDK for the Paysafe API",
+    "keywords" : ["payment", "payment processing", "netbanx", "optimal", "sdk"],
+    "license": "MIT",
+    "authors" : [
+        {
+            "name": "Paysafe",
+            "email": "DeveloperCentre@optimalpayments.com",
+            "homepage": "http://developer.paysafe.com",
+            "role": "Developer"
+        }
+
+    ],
+    "require": {
+        "php": ">=5.3.0",
+        "lib-curl" : "*"
+    },
+
+    "autoload" : {
+    	"files" : ["source/paysafe.php"]
+    }
+}

@@ -23,7 +23,7 @@ namespace Paysafe;
 class CardPaymentService
 {
     /**
-	 * @var OptimalApiClient
+	 * @var PaysafeApiClient
 	 */
     private $client;
 
@@ -36,7 +36,7 @@ class CardPaymentService
     /**
 	 * Initialize the card payment service.
 	 *
-	 * @param \OptimalPayments\OptimalApiClient $client
+	 * @param \Paysafe\PaysafeApiClient $client
 	 */
     public function __construct(PaysafeApiClient $client)
     {
@@ -47,8 +47,7 @@ class CardPaymentService
 	 * Monitor.
 	 *
 	 * @return bool true if successful
-	 * @throws OptimalException
-	 * @throws NetbanxException
+	 * @throws PaysafeException
 	 */
     public function monitor()
     {
@@ -66,8 +65,7 @@ class CardPaymentService
 	 *
 	 * @param CardPayments\Authorization $auth
 	 * @return CardPayments\Authorization
-	 * @throws OptimalException
-	 * @throws NetbanxException
+	 * @throws PaysafeException
 	 */
     public function authorize(CardPayments\Authorization $auth)
     {
@@ -103,10 +101,9 @@ class CardPaymentService
     /**
 	 * Cancel held authorization.
 	 *
-	 * @param \OptimalPayments\CardPayments\Authorization $auth
-	 * @return \OptimalPayments\CardPayments\Authorization
-	 * @throws OptimalException
-	 * @throws NetbanxException
+	 * @param \Paysafe\CardPayments\Authorization $auth
+	 * @return \Paysafe\CardPayments\Authorization
+	 * @throws PaysafeException
 	 */
     public function cancelHeldAuth(CardPayments\Authorization $auth)
     {
@@ -129,10 +126,9 @@ class CardPaymentService
     /**
 	 * Approve held authorization.
 	 *
-	 * @param \OptimalPayments\CardPayments\Authorization $auth
-	 * @return \OptimalPayments\CardPayments\Authorization
-	 * @throws OptimalException
-	 * @throws NetbanxException
+	 * @param \Paysafe\CardPayments\Authorization $auth
+	 * @return \Paysafe\CardPayments\Authorization
+	 * @throws PaysafeException
 	 */
     public function approveHeldAuth(CardPayments\Authorization $auth)
     {
@@ -155,10 +151,9 @@ class CardPaymentService
     /**
 	 * Reverse Authorization.
 	 *
-	 * @param \OptimalPayments\CardPayments\AuthorizationReversal $authReversal
-	 * @return \OptimalPayments\CardPayments\AuthorizationReversal
-	 * @throws OptimalException
-	 * @throws NetbanxException
+	 * @param \Paysafe\CardPayments\AuthorizationReversal $authReversal
+	 * @return \Paysafe\CardPayments\AuthorizationReversal
+	 * @throws PaysafeException
 	 */
     public function reverseAuth(CardPayments\AuthorizationReversal $authReversal)
     {
@@ -183,10 +178,9 @@ class CardPaymentService
     /**
 	 * Settlement.
 	 *
-	 * @param \OptimalPayments\CardPayments\Settlement $settlement
-	 * @return \OptimalPayments\CardPayments\Settlement
-	 * @throws OptimalException
-	 * @throws NetbanxException
+	 * @param \Paysafe\CardPayments\Settlement $settlement
+	 * @return \Paysafe\CardPayments\Settlement
+	 * @throws PaysafeException
 	 */
     public function settlement(CardPayments\Settlement $settlement)
     {
@@ -211,10 +205,9 @@ class CardPaymentService
     /**
 	 * Cancel settlement.
 	 *
-	 * @param \OptimalPayments\CardPayments\Settlement $settlement
-	 * @return \OptimalPayments\CardPayments\Settlement
-	 * @throws OptimalException
-	 * @throws NetbanxException
+	 * @param \Paysafe\CardPayments\Settlement $settlement
+	 * @return \Paysafe\CardPayments\Settlement
+	 * @throws PaysafeException
 	 */
     public function cancelSettlement(CardPayments\Settlement $settlement)
     {
@@ -237,10 +230,9 @@ class CardPaymentService
     /**
 	 * Refund.
 	 *
-	 * @param \OptimalPayments\CardPayments\Refund $refund
-	 * @return \OptimalPayments\CardPayments\Refund
-	 * @throws OptimalException
-	 * @throws NetbanxException
+	 * @param \Paysafe\CardPayments\Refund $refund
+	 * @return \Paysafe\CardPayments\Refund
+	 * @throws PaysafeException
 	 */
     public function refund(CardPayments\Refund $refund)
     {
@@ -266,10 +258,9 @@ class CardPaymentService
     /**
 	 * Cancel Refund.
 	 *
-	 * @param \OptimalPayments\CardPayments\Refund $refund
-	 * @return \OptimalPayments\CardPayments\Refund
-	 * @throws OptimalException
-	 * @throws NetbanxException
+	 * @param \Paysafe\CardPayments\Refund $refund
+	 * @return \Paysafe\CardPayments\Refund
+	 * @throws PaysafeException
 	 */
     public function cancelRefund(CardPayments\Refund $refund)
     {
@@ -292,10 +283,9 @@ class CardPaymentService
     /**
 	 * Verify.
 	 *
-	 * @param \OptimalPayments\CardPayments\Verification $verify
-	 * @return \OptimalPayments\CardPayments\Verification
-	 * @throws OptimalException
-	 * @throws NetbanxException
+	 * @param \Paysafe\CardPayments\Verification $verify
+	 * @return \Paysafe\CardPayments\Verification
+	 * @throws PaysafeException
 	 */
     public function verify(CardPayments\Verification $verify)
     {
@@ -327,8 +317,7 @@ class CardPaymentService
 	 *
 	 * @param CardPayments\Authorization $auth
 	 * @return CardPayments\Authorization
-	 * @throws OptimalException
-	 * @throws NetbanxException
+	 * @throws PaysafeException
 	 */
     public function getAuth(CardPayments\Authorization $auth)
     {
@@ -349,8 +338,7 @@ class CardPaymentService
 	 *
 	 * @param CardPayments\AuthorizationReversal $authReversal
 	 * @return CardPayments\AuthorizationReversal
-	 * @throws OptimalException
-	 * @throws NetbanxException
+	 * @throws PaysafeException
 	 */
     public function getAuthReversal(CardPayments\AuthorizationReversal $authReversal)
     {
@@ -371,8 +359,7 @@ class CardPaymentService
 	 *
 	 * @param CardPayments\Settlement $settlement
 	 * @return CardPayments\Settlement
-	 * @throws OptimalException
-	 * @throws NetbanxException
+	 * @throws PaysafeException
 	 */
     public function getSettlement(CardPayments\Settlement $settlement)
     {
@@ -393,8 +380,7 @@ class CardPaymentService
 	 *
 	 * @param CardPayments\Refund $refund
 	 * @return CardPayments\Refund[]
-	 * @throws OptimalException
-	 * @throws NetbanxException
+	 * @throws PaysafeException
 	 */
     public function getRefund(CardPayments\Refund $refund)
     {
@@ -415,8 +401,7 @@ class CardPaymentService
 	 *
 	 * @param CardPayments\Verification $verify
 	 * @return CardPayments\Verification
-	 * @throws OptimalException
-	 * @throws NetbanxException
+	 * @throws PaysafeException
 	 */
     public function getVerification(CardPayments\Verification $verify)
     {
@@ -438,8 +423,7 @@ class CardPaymentService
 	 * @param CardPayments\Authorization $auth
 	 * @param CardPayments\Filter $filter
 	 * @return CardPayments\Authorization[] iterator
-	 * @throws OptimalException
-	 * @throws NetbanxException
+	 * @throws PaysafeException
 	 */
     public function getAuths(CardPayments\Authorization $auth = null, CardPayments\Filter $filter = null)
     {
@@ -478,8 +462,7 @@ class CardPaymentService
 	 * @param CardPayments\AuthorizationReversal $authReversal
 	 * @param CardPayments\Filter $filter
 	 * @return CardPayments\AuthorizationReversal[] iterator
-	 * @throws OptimalException
-	 * @throws NetbanxException
+	 * @throws PaysafeException
 	 */
     public function getAuthReversals(CardPayments\AuthorizationReversal $authReversal = null, CardPayments\Filter $filter = null)
     {
@@ -518,8 +501,7 @@ class CardPaymentService
 	 * @param CardPayments\Settlement $settlement
 	 * @param CardPayments\Filter $filter
 	 * @return CardPayments\Settlement[] iterator
-	 * @throws OptimalException
-	 * @throws NetbanxException
+	 * @throws PaysafeException
 	 */
     public function getSettlements(CardPayments\Settlement $settlement = null, CardPayments\Filter $filter = null)
     {
@@ -558,8 +540,7 @@ class CardPaymentService
 	 * @param CardPayments\Refund $refund
 	 * @param CardPayments\Filter $filter
 	 * @return CardPayments\Refund[] iterator
-	 * @throws OptimalException
-	 * @throws NetbanxException
+	 * @throws PaysafeException
 	 */
     public function getRefunds(CardPayments\Refund $refund = null, CardPayments\Filter $filter = null)
     {
@@ -598,8 +579,7 @@ class CardPaymentService
 	 * @param CardPayments\Verification $verify
 	 * @param CardPayments\Filter $filter
 	 * @return CardPayments\Verification[] iterator
-	 * @throws OptimalException
-	 * @throws NetbanxException
+	 * @throws PaysafeException
 	 */
     public function getVerifications(CardPayments\Verification $verify = null, CardPayments\Filter $filter = null)
     {
@@ -637,7 +617,7 @@ class CardPaymentService
 	 *
 	 * @param type $path
 	 * @return string uri
-	 * @throw OptimalException
+	 * @throw PaysafeException
 	 */
     private function prepareURI($path)
     {

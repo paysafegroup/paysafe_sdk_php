@@ -20,6 +20,6 @@
 
 namespace Paysafe;
 
-class APIException extends NetbanxException
+class APIException extends PaysafeException
 {
 }

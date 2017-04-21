@@ -201,7 +201,7 @@ if ($_POST)
             }
             /* End cancel ACH without Payment Token */
             die('Payment successful! ID: ' . $purchase->id);
-        } catch (Paysafe\NetbanxException $e)
+        } catch (Paysafe\PaysafeException $e)
         {
             echo '<pre>';
             var_dump($e->getMessage());

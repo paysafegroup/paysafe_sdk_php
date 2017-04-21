@@ -24,7 +24,7 @@ namespace Paysafe;
  * @property string $field
  * @property string $error
  */
-class FieldError extends JSONObject
+class FieldError extends \Paysafe\JSONObject
 {
     protected static $fieldTypes = array(
          'field'=>'string',

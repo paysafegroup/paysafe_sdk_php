@@ -32,7 +32,7 @@ class ThreeDsecureService
 {
 
     /**
-     * @var OptimalApiClient
+     * @var PaysafeApiClient
      */
     private $client;
 
@@ -45,7 +45,7 @@ class ThreeDsecureService
     /**
      * Initialize the Threedsecure service.
      *
-     * @param \OptimalPayments\OptimalApiClient $client
+     * @param \Paysafe\PaysafeApiClient $client
      */
     public function __construct( PaysafeApiClient $client )
     {
@@ -56,8 +56,7 @@ class ThreeDsecureService
      * Monitor.
      *
      * @return bool true if successful
-     * @throws OptimalException
-     * @throws NetbanxException
+     * @throws PaysafeException
      * The following request verifies that the service is up and accessible from your network.
      */
     public function monitor()
@@ -72,10 +71,9 @@ class ThreeDsecureService
 
     /**
      * Submit an Enrollment lookup Request
-     * @param \OptimalPayments\ThreeDSecure\ThreeDEnrollment $enrollmentchecks
-     * @return \OptimalPayments\ThreeDSecure\ThreeDEnrollment
-     * @throws OptimalException
-     * @throws NetbanxException
+     * @param \Paysafe\ThreeDSecure\ThreeDEnrollment $enrollmentchecks
+     * @return \Paysafe\ThreeDSecure\ThreeDEnrollment
+     * @throws PaysafeException
      */
     public function enrollmentChecks( ThreeDSecure\ThreeDEnrollment $enrollmentchecks )
     {
@@ -102,10 +100,9 @@ class ThreeDsecureService
 
     /**
      * Look Up an Enrollment Lookup Using an ID
-     * @param \OptimalPayments\ThreeDSecure\ThreeDEnrollment $enrollmentchecks
-     * @return \OptimalPayments\ThreeDSecure\ThreeDEnrollment
-     * @throws OptimalException
-     * @throws NetbanxException
+     * @param \Paysafe\ThreeDSecure\ThreeDEnrollment $enrollmentchecks
+     * @return \Paysafe\ThreeDSecure\ThreeDEnrollment
+     * @throws PaysafeException
      */
     public function getenrollmentChecks( ThreeDSecure\ThreeDEnrollment $enrollmentchecks )
     {
@@ -124,10 +121,9 @@ class ThreeDsecureService
 
     /**
      * Submit an Authentications Request
-     * @param \OptimalPayments\ThreeDSecure\Authentications $authentications
-     * @return \OptimalPayments\ThreeDSecure\Authentications
-     * @throws OptimalException
-     * @throws NetbanxException
+     * @param \Paysafe\ThreeDSecure\Authentications $authentications
+     * @return \Paysafe\ThreeDSecure\Authentications
+     * @throws PaysafeException
      */
     public function authentications( ThreeDSecure\Authentications $authentications )
     {
@@ -148,10 +144,9 @@ class ThreeDsecureService
 
     /**
      * Look Up an Authentication Using an ID
-     * @param \OptimalPayments\ThreeDSecure\Authentications $authentications
-     * @return \OptimalPayments\ThreeDSecure\Authentications
-     * @throws OptimalException
-     * @throws NetbanxException
+     * @param \Paysafe\ThreeDSecure\Authentications $authentications
+     * @return \Paysafe\ThreeDSecure\Authentications
+     * @throws PaysafeException
      */
     public function getAuthentication( ThreeDSecure\Authentications $authentications )
     {
@@ -167,10 +162,9 @@ class ThreeDsecureService
 
     /**
      * Look Up an Authentication and Corresponding Enrollment Check
-     * @param \OptimalPayments\ThreeDSecure\Authentications $authentications
-     * @return \OptimalPayments\ThreeDSecure\Authentications
-     * @throws OptimalException
-     * @throws NetbanxException
+     * @param \Paysafe\ThreeDSecure\Authentications $authentications
+     * @return \Paysafe\ThreeDSecure\Authentications
+     * @throws PaysafeException
      */
     public function getAuthentications( ThreeDSecure\Authentications $authentications,$enrollmentlookup )
     {

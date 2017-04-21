@@ -20,6 +20,6 @@
 
 namespace Paysafe;
 
-class EntityNotFoundException extends NetbanxException
+class EntityNotFoundException extends PaysafeException
 {
 }

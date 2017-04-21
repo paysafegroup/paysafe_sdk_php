@@ -23,17 +23,17 @@
      * @property String $id
      * @property String $merchantRefNum
      * @property String $amount
-     * @property \OptimalPayments\DirectDebit\ach $ach
-     * @property \OptimalPayments\DirectDebit\eft $eft
-     * @property \OptimalPayments\DirectDebit\bacs $bacs
-     * @property \OptimalPayments\DirectDebit\sepa $sepa
-     * @property \OptimalPayments\DirectDebit\profile $profile
-     * @property \OptimalPayments\DirectDebit\billingDetails $billingDetails
+     * @property \Paysafe\DirectDebit\ach $ach
+     * @property \Paysafe\DirectDebit\eft $eft
+     * @property \Paysafe\DirectDebit\bacs $bacs
+     * @property \Paysafe\DirectDebit\sepa $sepa
+     * @property \Paysafe\DirectDebit\profile $profile
+     * @property \Paysafe\DirectDebit\billingDetails $billingDetails
      * @property String $customerIp
      * @property String $dupCheck
      * @property String $txnTime
      * @property String $currencyCode
-     * @property \OptimalPayments\Error $error
+     * @property \Paysafe\Error $error
      * @property String $status
      */
     class Purchase extends \Paysafe\JSONObject implements \Paysafe\Pageable {
@@ -71,8 +71,8 @@
         /**
          *
          * @param type $linkName
-         * @return \OptimalPayments\HostedPayment\Link
-         * @throws OptimalException
+         * @return \Paysafe\HostedPayment\Link
+         * @throws PaysafeException
          */
         public function getLink( $linkName ) {
             if (!empty($this->link)) {

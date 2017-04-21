@@ -24,13 +24,13 @@ namespace Paysafe\CardPayments;
  * @property string $id
  * @property string $merchantRefNum
  * @property string $childAccountNum
- * @property \OptimalPayments\CardPayments\Card $card
+ * @property \Paysafe\CardPayments\Card $card
  * @property string $authCode
- * @property \OptimalPayments\CardPayments\Profile $profile
- * @property \OptimalPayments\CardPayments\BillingDetails $billingDetails
+ * @property \Paysafe\CardPayments\Profile $profile
+ * @property \Paysafe\CardPayments\BillingDetails $billingDetails
  * @property string $customerIp
  * @property string $dupCheck
- * @property \OptimalPayments\CardPayments\MerchantDescriptor $merchantDescriptor
+ * @property \Paysafe\CardPayments\MerchantDescriptor $merchantDescriptor
  * @property string $description
  * @property string $txnTime
  * @property string $currencyCode
@@ -38,9 +38,9 @@ namespace Paysafe\CardPayments;
  * @property string $cvvVerification
  * @property string $status
  * @property int[] $riskReasonCode
- * @property \OptimalPayments\CardPayments\AcquirerResponse $acquirerResponse
- * @property \OptimalPayments\Error $error
- * @property \OptimalPayments\Link[] $links
+ * @property \Paysafe\CardPayments\AcquirerResponse $acquirerResponse
+ * @property \Paysafe\Error $error
+ * @property \Paysafe\Link[] $links
  */
 class Verification extends \Paysafe\JSONObject implements \Paysafe\Pageable
 {

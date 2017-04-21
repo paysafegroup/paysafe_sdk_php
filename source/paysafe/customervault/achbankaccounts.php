@@ -35,7 +35,7 @@
      * @property string $billingAddressId
      * @property string $paymentToken
      */
-    class ACHBankaccounts extends \OptimalPayments\JSONObject
+    class ACHBankaccounts extends \Paysafe\JSONObject
     {
 
         protected static $fieldTypes = array(

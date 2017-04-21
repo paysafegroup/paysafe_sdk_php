@@ -25,7 +25,7 @@ namespace Paysafe\CardPayments;
  * @property string $cardNum
  * @property string $type
  * @property string $lastDigits
- * @property \OptimalPayments\CardPayments\CardExpiry $cardExpiry
+ * @property \Paysafe\CardPayments\CardExpiry $cardExpiry
  * @property string $cvv
  * @property string $track1
  * @property string $track2

@@ -25,7 +25,7 @@ class CustomerVaultService
 {
 
     /**
-     * @var OptimalApiClient
+     * @var PaysafeApiClient
      */
     private $client;
 
@@ -38,7 +38,7 @@ class CustomerVaultService
     /**
      * Initialize the customer vault service.
      *
-     * @param \OptimalPayments\OptimalApiClient $client
+     * @param \Paysafe\PaysafeApiClient $client
      */
     public function __construct( PaysafeApiClient $client )
     {
@@ -49,8 +49,7 @@ class CustomerVaultService
      * Monitor.
      *
      * @return bool true if successful
-     * @throws OptimalException
-     * @throws NetbanxException
+     * @throws PaysafeException
      */
     public function monitor()
     {
@@ -66,10 +65,9 @@ class CustomerVaultService
     /**
      * Create profile.
      *
-     * @param \OptimalPayments\CustomerVault\Profile $profile
-     * @return \OptimalPayments\CustomerVault\Profile
-     * @throws OptimalException
-     * @throws NetbanxException
+     * @param \Paysafe\CustomerVault\Profile $profile
+     * @return \Paysafe\CustomerVault\Profile
+     * @throws PaysafeException
      */
     public function createProfile( CustomerVault\Profile $profile )
     {
@@ -104,10 +102,9 @@ class CustomerVaultService
     /**
      * Update profile.
      *
-     * @param \OptimalPayments\CustomerVault\Profile $profile
-     * @return \OptimalPayments\CustomerVault\Profile
-     * @throws OptimalException
-     * @throws NetbanxException
+     * @param \Paysafe\CustomerVault\Profile $profile
+     * @return \Paysafe\CustomerVault\Profile
+     * @throws PaysafeException
      */
     public function updateProfile( CustomerVault\Profile $profile )
     {
@@ -143,10 +140,9 @@ class CustomerVaultService
     /**
      * Delete profile.
      *
-     * @param \OptimalPayments\CustomerVault\Profile $profile
+     * @param \Paysafe\CustomerVault\Profile $profile
      * @return bool
-     * @throws OptimalException
-     * @throws NetbanxException
+     * @throws PaysafeException
      */
     public function deleteProfile( CustomerVault\Profile $profile )
     {
@@ -164,7 +160,7 @@ class CustomerVaultService
     /**
      * Get the profile.
      *
-     * @param \OptimalPayments\CustomerVault\Profile $profile
+     * @param \Paysafe\CustomerVault\Profile $profile
      * @param bool $includeAddresses
      * @param bool $includeCards
      * @param bool $includeachbankaccount
@@ -172,8 +168,7 @@ class CustomerVaultService
      * @param bool $includebacsbankaccount
      * @param bool $includesepabankaccount
      * @return bool
-     * @throws OptimalException
-     * @throws NetbanxException
+     * @throws PaysafeException
      */
     public function getProfile( CustomerVault\Profile $profile, $includeAddresses = false, $includeCards = false, $includeachbankaccount = false, $includeeftbankaccount = false, $includebacsbankaccount = false, $includesepabankaccount = false )
     {
@@ -225,10 +220,9 @@ class CustomerVaultService
     /**
      * Create address.
      *
-     * @param \OptimalPayments\CustomerVault\Address $address
-     * @return \OptimalPayments\CustomerVault\Address
-     * @throws OptimalException
-     * @throws NetbanxException
+     * @param \Paysafe\CustomerVault\Address $address
+     * @return \Paysafe\CustomerVault\Address
+     * @throws PaysafeException
      */
     public function createAddress( CustomerVault\Address $address )
     {
@@ -259,10 +253,9 @@ class CustomerVaultService
     /**
      * Update address.
      *
-     * @param \OptimalPayments\CustomerVault\Address $address
-     * @return \OptimalPayments\CustomerVault\Address
-     * @throws OptimalException
-     * @throws NetbanxException
+     * @param \Paysafe\CustomerVault\Address $address
+     * @return \Paysafe\CustomerVault\Address
+     * @throws PaysafeException
      */
     public function updateAddress( CustomerVault\Address $address )
     {
@@ -297,10 +290,9 @@ class CustomerVaultService
     /**
      * Delete address.
      *
-     * @param \OptimalPayments\CustomerVault\Address $address
+     * @param \Paysafe\CustomerVault\Address $address
      * @return bool
-     * @throws OptimalException
-     * @throws NetbanxException
+     * @throws PaysafeException
      */
     public function deleteAddress( CustomerVault\Address $address )
     {
@@ -322,10 +314,9 @@ class CustomerVaultService
     /**
      * Get the address.
      *
-     * @param \OptimalPayments\CustomerVault\Address $address
+     * @param \Paysafe\CustomerVault\Address $address
      * @return bool
-     * @throws OptimalException
-     * @throws NetbanxException
+     * @throws PaysafeException
      */
     public function getAddress( CustomerVault\Address $address )
     {
@@ -348,10 +339,9 @@ class CustomerVaultService
     /**
      * Create card.
      *
-     * @param \OptimalPayments\CustomerVault\Card $card
-     * @return \OptimalPayments\CustomerVault\Card
-     * @throws OptimalException
-     * @throws NetbanxException
+     * @param \Paysafe\CustomerVault\Card $card
+     * @return \Paysafe\CustomerVault\Card
+     * @throws PaysafeException
      */
     public function createCard( CustomerVault\Card $card )
     {
@@ -382,10 +372,9 @@ class CustomerVaultService
     /**
      * Update card.
      *
-     * @param \OptimalPayments\CustomerVault\Card $card
-     * @return \OptimalPayments\CustomerVault\Card
-     * @throws OptimalException
-     * @throws NetbanxException
+     * @param \Paysafe\CustomerVault\Card $card
+     * @return \Paysafe\CustomerVault\Card
+     * @throws PaysafeException
      */
     public function updateCard( CustomerVault\Card $card )
     {
@@ -417,10 +406,9 @@ class CustomerVaultService
     /**
      * Delete card.
      *
-     * @param \OptimalPayments\CustomerVault\Card $card
+     * @param \Paysafe\CustomerVault\Card $card
      * @return bool
-     * @throws OptimalException
-     * @throws NetbanxException
+     * @throws PaysafeException
      */
     public function deleteCard( CustomerVault\Card $card )
     {
@@ -442,10 +430,9 @@ class CustomerVaultService
     /**
      * Get the card.
      *
-     * @param \OptimalPayments\CustomerVault\Card $card
+     * @param \Paysafe\CustomerVault\Card $card
      * @return bool
-     * @throws OptimalException
-     * @throws NetbanxException
+     * @throws PaysafeException
      */
     public function getCard( CustomerVault\Card $card )
     {
@@ -470,7 +457,7 @@ class CustomerVaultService
      *
      * @param type $path
      * @return string uri
-     * @throw OptimalException
+     * @throw PaysafeException
      */
     private function prepareURI( $path )
     {
@@ -481,9 +468,8 @@ class CustomerVaultService
      * Creates ACH bank account for given profile id.
      *
      * @param CustomerVault\ACHBankaccounts $bankDetails https://developer.optimalpayments.com/en/documentation/customer-vault-api/ach-bank-accounts/
-     * @return \OptimalPayments\CustomerVault\Profile https://developer.optimalpayments.com/en/documentation/customer-vault-api/profiles/
-     * @throws OptimalException
-     * @throws NetbanxException
+     * @return \Paysafe\CustomerVault\Profile https://developer.optimalpayments.com/en/documentation/customer-vault-api/profiles/
+     * @throws PaysafeException
      */
     public function createACHBankAccount( CustomerVault\ACHBankaccounts $bankDetails )
     {
@@ -515,9 +501,8 @@ class CustomerVaultService
      * Creates EFT bank account for given profile id.
      *
      * @param CustomerVault\EFTBankaccounts $bankDetails https://developer.optimalpayments.com/en/documentation/customer-vault-api/eft-bank-accounts/
-     * @return \OptimalPayments\CustomerVault\Profile https://developer.optimalpayments.com/en/documentation/customer-vault-api/profiles/
-     * @throws OptimalException
-     * @throws NetbanxException
+     * @return \Paysafe\CustomerVault\Profile https://developer.optimalpayments.com/en/documentation/customer-vault-api/profiles/
+     * @throws PaysafeException
      */
     public function createEFTBankAccount( CustomerVault\EFTBankaccounts $bankDetails )
     {
@@ -547,10 +532,9 @@ class CustomerVaultService
     /**
      * Creates BACS bank account for given profile id.
      *
-     * @param CustomerVault\ACHBankaccounts $bankDetails https://developer.optimalpayments.com/en/documentation/customer-vault-api/bacs-bank-accounts/
-     * @return \OptimalPayments\CustomerVault\Profile https://developer.optimalpayments.com/en/documentation/customer-vault-api/profiles/
-     * @throws OptimalException
-     * @throws NetbanxException
+     * @param CustomerVault\ACHBankaccounts $bankDetails https://developer.Paysafe.com/en/documentation/customer-vault-api/bacs-bank-accounts/
+     * @return \Paysafe\CustomerVault\Profile https://developer.optimalpayments.com/en/documentation/customer-vault-api/profiles/
+     * @throws PaysafeException
      */
     public function createBACSBankAccount( CustomerVault\BACSBankaccounts $bankDetails )
     {
@@ -581,9 +565,8 @@ class CustomerVaultService
      * Creates SEPA bank account for given profile id.
      *
      * @param CustomerVault\SEPABankaccounts $bankDetails https://developer.optimalpayments.com/en/documentation/customer-vault-api/sepa-bank-accounts/
-     * @return \OptimalPayments\CustomerVault\Profile https://developer.optimalpayments.com/en/documentation/customer-vault-api/profiles/
-     * @throws OptimalException
-     * @throws NetbanxException
+     * @return \Paysafe\CustomerVault\Profile https://developer.optimalpayments.com/en/documentation/customer-vault-api/profiles/
+     * @throws PaysafeException
      */
     public function createSEPABankAccount( CustomerVault\SEPABankaccounts $bankDetails )
     {
@@ -615,9 +598,8 @@ class CustomerVaultService
      *
      * @param CustomerVault\Profile $profile
      * @param CustomerVault\ACHBankaccounts $bankDetails
-     * @return \OptimalPayments\CustomerVault\Profile
-     * @throws OptimalException
-     * @throws NetbanxException
+     * @return \Paysafe\CustomerVault\Profile
+     * @throws PaysafeException
      */
     public function getACHBankAccount( CustomerVault\Profile $profile, CustomerVault\ACHBankaccounts $bankDetails )
     {
@@ -641,9 +623,8 @@ class CustomerVaultService
      *
      * @param CustomerVault\Profile $profile
      * @param CustomerVault\EFTBankaccounts $bankDetails
-     * @return \OptimalPayments\CustomerVault\Profile
-     * @throws OptimalException
-     * @throws NetbanxException
+     * @return \Paysafe\CustomerVault\Profile
+     * @throws PaysafeException
      */
     public function getEFTBankAccount( CustomerVault\Profile $profile, CustomerVault\EFTBankaccounts $bankDetails )
     {
@@ -665,9 +646,8 @@ class CustomerVaultService
      *
      * @param CustomerVault\Profile $profile
      * @param CustomerVault\BACSBankaccounts $bankDetails
-     * @return \OptimalPayments\CustomerVault\Profile
-     * @throws OptimalException
-     * @throws NetbanxException
+     * @return \Paysafe\CustomerVault\Profile
+     * @throws PaysafeException
      */
     public function getBACSBankAccount( CustomerVault\Profile $profile, CustomerVault\BACSBankaccounts $bankDetails )
     {
@@ -689,9 +669,8 @@ class CustomerVaultService
      *
      * @param CustomerVault\Profile $profile
      * @param CustomerVault\SEPABankaccounts $bankDetails
-     * @return \OptimalPayments\CustomerVault\Profile
-     * @throws OptimalException
-     * @throws NetbanxException
+     * @return \Paysafe\CustomerVault\Profile
+     * @throws PaysafeException
      */
     public function getSEPABankAccount( CustomerVault\Profile $profile, CustomerVault\SEPABankaccounts $bankDetails )
     {
@@ -714,9 +693,8 @@ class CustomerVaultService
      *
      * @param CustomerVault\Profile $profile
      * @param CustomerVault\ACHBankaccounts $bankDetails
-     * @return \OptimalPayments\CustomerVault\Profile
-     * @throws OptimalException
-     * @throws NetbanxException
+     * @return \Paysafe\CustomerVault\Profile
+     * @throws PaysafeException
      */
     public function updateACHBankAccount( CustomerVault\Profile $profile, CustomerVault\ACHBankaccounts $bankDetails )
     {
@@ -750,9 +728,8 @@ class CustomerVaultService
      *
      * @param CustomerVault\Profile $profile
      * @param CustomerVault\EFTBankaccounts $bankDetails
-     * @return \OptimalPayments\CustomerVault\Profile
-     * @throws OptimalException
-     * @throws NetbanxException
+     * @return \Paysafe\CustomerVault\Profile
+     * @throws PaysafeException
      */
     public function updateEFTBankAccount( CustomerVault\Profile $profile, CustomerVault\EFTBankaccounts $bankDetails )
     {
@@ -784,9 +761,8 @@ class CustomerVaultService
      *
      * @param CustomerVault\Profile $profile
      * @param CustomerVault\BACSBankaccounts $bankDetails
-     * @return \OptimalPayments\CustomerVault\Profile
-     * @throws OptimalException
-     * @throws NetbanxException
+     * @return \Paysafe\CustomerVault\Profile
+     * @throws PaysafeException
      */
     public function updateBACSBankAccount( CustomerVault\Profile $profile, CustomerVault\BACSBankaccounts $bankDetails )
     {
@@ -817,9 +793,8 @@ class CustomerVaultService
      *
      * @param CustomerVault\Profile $profile
      * @param CustomerVault\SEPABankaccounts $bankDetails
-     * @return \OptimalPayments\CustomerVault\Profile
-     * @throws OptimalException
-     * @throws NetbanxException
+     * @return \Paysafe\CustomerVault\Profile
+     * @throws PaysafeException
      */
     public function updateSEPABankAccount( CustomerVault\Profile $profile, CustomerVault\SEPABankaccounts $bankDetails )
     {
@@ -850,9 +825,8 @@ class CustomerVaultService
      *
      * @param CustomerVault\Profile $profile
      * @param CustomerVault\ACHBankaccounts $bankDetails
-     * @return \OptimalPayments\CustomerVault\Profile
-     * @throws OptimalException
-     * @throws NetbanxException
+     * @return \Paysafe\CustomerVault\Profile
+     * @throws PaysafeException
      */
     public function deleteACHBankAccount( CustomerVault\Profile $profile, CustomerVault\ACHBankaccounts $bankDetails )
     {
@@ -873,9 +847,8 @@ class CustomerVaultService
      *
      * @param CustomerVault\Profile $profile
      * @param CustomerVault\EFTBankaccounts $bankDetails
-     * @return \OptimalPayments\CustomerVault\Profile
-     * @throws OptimalException
-     * @throws NetbanxException
+     * @return \Paysafe\CustomerVault\Profile
+     * @throws PaysafeException
      */
     public function deleteEFTBankAccount( CustomerVault\Profile $profile, CustomerVault\EFTBankaccounts $bankDetails )
     {
@@ -897,9 +870,8 @@ class CustomerVaultService
      *
      * @param CustomerVault\Profile $profile
      * @param CustomerVault\BACSBankaccounts $bankDetails
-     * @return \OptimalPayments\CustomerVault\Profile
-     * @throws OptimalException
-     * @throws NetbanxException
+     * @return \Paysafe\CustomerVault\Profile
+     * @throws PaysafeException
      */
     public function deleteBACSBankAccount( CustomerVault\Profile $profile, CustomerVault\BACSBankaccounts $bankDetails )
     {
@@ -920,9 +892,8 @@ class CustomerVaultService
      *
      * @param CustomerVault\Profile $profile
      * @param CustomerVault\SEPABankaccounts $bankDetails
-     * @return \OptimalPayments\CustomerVault\Profile
-     * @throws OptimalException
-     * @throws NetbanxException
+     * @return \Paysafe\CustomerVault\Profile
+     * @throws PaysafeException
      */
     public function deleteSEPABankAccount( CustomerVault\Profile $profile, CustomerVault\SEPABankaccounts $bankDetails )
     {
@@ -940,10 +911,9 @@ class CustomerVaultService
 
     /**
      * Process Create a Mandate.
-     * @param \OptimalPayments\CustomerVault\Mandate $mandate
-     * @return \OptimalPayments\CustomerVault\Mandate
-     * @throws OptimalException
-     * @throws NetbanxException
+     * @param \Paysafe\CustomerVault\Mandate $mandate
+     * @return \Paysafe\CustomerVault\Mandate
+     * @throws PaysafeException
      */
     public function createMandates(CustomerVault\Mandates $mandates ,$bankaccounts) {
          $mandates->setRequiredFields(array(
@@ -963,10 +933,9 @@ class CustomerVaultService
     }
        /**
          * Process Look Up a Mandates
-         * @param \OptimalPayments\CustomerVault\Mandate $mandates
-         * @return \OptimalPayments\CustomerVault\Mandates
-         * @throws OptimalException
-         * @throws NetbanxException
+         * @param \Paysafe\CustomerVault\Mandate $mandates
+         * @return \Paysafe\CustomerVault\Mandates
+         * @throws PaysafeException
          */
     
      public function getMandates(CustomerVault\Mandates $mandates) {
@@ -986,10 +955,9 @@ class CustomerVaultService
     }
     /**
          * Process Update a Mandates
-         * @param \OptimalPayments\CustomerVault\Mandate $mandates
-         * @return \OptimalPayments\CustomerVault\Mandates
-         * @throws OptimalException
-         * @throws NetbanxException
+         * @param \Paysafe\CustomerVault\Mandate $mandates
+         * @return \Paysafe\CustomerVault\Mandates
+         * @throws PaysafeException
          */
     public function updateMandates(CustomerVault\Mandates $mandates) {
      
@@ -1010,10 +978,9 @@ class CustomerVaultService
     
         /**
          * Process Delete a Mandates
-         * @param \OptimalPayments\CustomerVault\Mandate $mandates
-         * @return \OptimalPayments\CustomerVault\Mandates
-         * @throws OptimalException
-         * @throws NetbanxException
+         * @param \Paysafe\CustomerVault\Mandate $mandates
+         * @return \Paysafe\CustomerVault\Mandates
+         * @throws PaysafeException
          */
     public function deleteMandates(CustomerVault\Mandates $mandates) {
         $request = new Request(array(

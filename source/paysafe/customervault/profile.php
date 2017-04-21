@@ -28,7 +28,7 @@ namespace Paysafe\CustomerVault;
  * @property string $firstName
  * @property string $middleName
  * @property string $lastName
- * @property \OptimalPayments\CustomerVault\DateOfBirth $dateOfBirth
+ * @property \Paysafe\CustomerVault\DateOfBirth $dateOfBirth
  * @property string $ip
  * @property string $gender
  * @property string $nationality
@@ -36,14 +36,14 @@ namespace Paysafe\CustomerVault;
  * @property string $phone
  * @property string $cellPhone
  * @property string $paymentToken
- * @property \OptimalPayments\CustomerVault\Address[] $addresses
- * @property \OptimalPayments\CustomerVault\Card[] $cards
- * @property \OptimalPayments\Error $error
- * @property \OptimalPayments\Link[] $links
- * @property \OptimalPayments\achbankaccount $achBankAccounts
- * @property \OptimalPayments\bacsbankaccounts $bacsBankAccounts
- * @property \OptimalPayments\eftbankaccounts $eftBankAccounts
- * @property \OptimalPayments\sepabankaccounts $sepaBankAccounts
+ * @property \Paysafe\CustomerVault\Address[] $addresses
+ * @property \Paysafe\CustomerVault\Card[] $cards
+ * @property \Paysafe\Error $error
+ * @property \Paysafe\Link[] $links
+ * @property \Paysafe\achbankaccount $achBankAccounts
+ * @property \Paysafe\bacsbankaccounts $bacsBankAccounts
+ * @property \Paysafe\eftbankaccounts $eftBankAccounts
+ * @property \Paysafe\sepabankaccounts $sepaBankAccounts
  */
 class Profile extends \Paysafe\JSONObject
 {
@@ -77,10 +77,10 @@ class Profile extends \Paysafe\JSONObject
          'cards'=>'array:\Paysafe\CustomerVault\Card',
          'error' => '\Paysafe\Error',
          'links' => 'array:\Paysafe\Link',
-		 'achBankAccounts' => '\Paysafe\CustomerVault\ACHBankaccounts',
-         'bacsBankAccounts' => '\Paysafe\CustomerVault\BACSBankaccounts',
-         'eftBankAccounts' => '\Paysafe\CustomerVault\EFTBankaccounts',
-         'sepaBankAccounts' => '\Paysafe\CustomerVault\SEPABankaccounts'
+		     'achBankAccounts' => 'array:\Paysafe\CustomerVault\ACHBankaccounts',
+         'bacsBankAccounts' => 'array:\Paysafe\CustomerVault\BACSBankaccounts',
+         'eftBankAccounts' => 'array:\Paysafe\CustomerVault\EFTBankaccounts',
+         'sepaBankAccounts' => 'array:\Paysafe\CustomerVault\SEPABankaccounts'
     );
 
 }

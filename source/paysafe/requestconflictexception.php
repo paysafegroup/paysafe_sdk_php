@@ -20,6 +20,6 @@
 
 namespace Paysafe;
 
-class RequestConflictException extends NetbanxException
+class RequestConflictException extends PaysafeException
 {
 }

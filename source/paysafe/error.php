@@ -24,10 +24,10 @@ namespace Paysafe;
  * @property string $code
  * @property string $message
  * @property string[] $details
- * @property \OptimalPayments\FieldError[] $fieldErrors
- * @property \OptimalPayments\Link[] $links
+ * @property \Paysafe\FieldError[] $fieldErrors
+ * @property \Paysafe\Link[] $links
  */
-class Error extends JSONObject
+class Error extends \Paysafe\JSONObject
 {
     protected static $fieldTypes = array(
          'code' => 'string',

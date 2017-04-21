@@ -29,13 +29,13 @@ namespace Paysafe\CustomerVault;
  * @property string $cardNum
  * @property string $cardBin
  * @property string $lastDigits
- * @property \OptimalPayments\Customervault\CardExpiry $cardExpiry
+ * @property \Paysafe\Customervault\CardExpiry $cardExpiry
  * @property string $cardType
  * @property string $billingAddressId
  * @property bool $defaultCardIndicator
  * @property string $paymentToken
- * @property \OptimalPayments\Error $error
- * @property \OptimalPayments\Link[] $links
+ * @property \Paysafe\Error $error
+ * @property \Paysafe\Link[] $links
  * @property string $profileID
  */
 class Card extends \Paysafe\JSONObject

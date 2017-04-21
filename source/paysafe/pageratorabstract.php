@@ -53,23 +53,23 @@ abstract class PageratorAbstract implements \Iterator
 
     /**
 	 * The link to the next page, if we haven't yet retrieved all results
-	 * @var \OptimalPayments\Link
+	 * @var \Paysafe\Link
 	 */
     protected $nextPage = null;
 
     /**
 	 *
-	 * @var OptimalApiClient
+	 * @var PaysafeApiClient
 	 */
     private $client = null;
 
     /**
 	 * Instantiate the pagerator.
 	 *
-	 * @param \OptimalPayments\OptimalApiClient $client
+	 * @param \Paysafe\PaysafeApiClient $client
 	 * @param array $data
 	 * @param string $className
-	 * @throws OptimalException
+	 * @throws PaysafeException
 	 */
     public function __construct(\Paysafe\PaysafeApiClient $client, $data, $className)
     {

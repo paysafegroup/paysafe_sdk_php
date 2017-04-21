@@ -20,6 +20,6 @@
 
 namespace Paysafe;
 
-class PermissionException extends NetbanxException
+class PermissionException extends PaysafeException
 {
 }

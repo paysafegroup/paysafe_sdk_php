@@ -30,7 +30,7 @@ if ($_POST) {
 		))));
                // var_dump($auth);die;
 		die('Payment successful! ID: ' . $auth->id);
-	} catch (Paysafe\NetbanxException $e) {
+	} catch (Paysafe\PaysafeException $e) {
 		echo '<pre>';
 		var_dump($e->getMessage());
 		if ($e->fieldErrors) {

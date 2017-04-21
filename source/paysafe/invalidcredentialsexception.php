@@ -20,6 +20,6 @@
 
 namespace Paysafe;
 
-class InvalidCredentialsException extends NetbanxException
+class InvalidCredentialsException extends PaysafeException
 {
 }

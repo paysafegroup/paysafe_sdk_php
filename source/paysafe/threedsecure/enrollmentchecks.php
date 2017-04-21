@@ -28,12 +28,12 @@ namespace Paysafe\ThreeDSecure;
  * @property string $paReq
  * @property string $customerIp
  * @property string $txnTime
- * @property \OptimalPayments\ThreeDSecure\Card $card
+ * @property \Paysafe\ThreeDSecure\Card $card
  * @property string $acsURL
  * @property string $eci
  * @property string $currency
- * @property \OptimalPayments\ThreeDSecure\ThreeDEnrollment $threeDEnrollment
- * @property \OptimalPayments\Error $error
+ * @property \Paysafe\ThreeDSecure\ThreeDEnrollment $threeDEnrollment
+ * @property \Paysafe\Error $error
  * @property string $status
  * 
  */

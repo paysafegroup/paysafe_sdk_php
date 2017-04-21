@@ -25,7 +25,7 @@ namespace Paysafe\CardPayments;
  * @property int $month
  * @property int $year
  */
-class VisaAdditionalAuthData extends \Paysafe\JSONObject
+class DateOfBirth extends \Paysafe\JSONObject
 {
     protected static $fieldTypes = array(
          'day' => 'int',

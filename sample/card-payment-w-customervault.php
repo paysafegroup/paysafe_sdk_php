@@ -515,7 +515,7 @@ if ($_POST)
                 echo "</pre>";
                 die;
             }
-        } catch (Paysafe\NetbanxException $e)
+        } catch (Paysafe\PaysafeException $e)
         {
             echo '<pre>';
             var_dump($e->getMessage());

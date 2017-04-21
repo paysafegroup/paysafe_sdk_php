@@ -23,17 +23,17 @@
      * @property string $id
      * @property string $merchantRefNum
      * @property int $amount
-     * @property \OptimalPayments\DirectDebit\ach $ach
-     * @property \OptimalPayments\DirectDebit\eft $eft
-     * @property \OptimalPayments\DirectDebit\bacs $bacs
-     * @property \OptimalPayments\DirectDebit\profile $profile
-     * @property \OptimalPayments\DirectDebit\billingDetails $billingDetails
-     * @property \OptimalPayments\DirectDebit\ShippingDetails $shippingDetails
+     * @property \Paysafe\DirectDebit\ach $ach
+     * @property \Paysafe\DirectDebit\eft $eft
+     * @property \Paysafe\DirectDebit\bacs $bacs
+     * @property \Paysafe\DirectDebit\profile $profile
+     * @property \Paysafe\DirectDebit\billingDetails $billingDetails
+     * @property \Paysafe\DirectDebit\ShippingDetails $shippingDetails
      * @property string $customerIp
      * @property string $dupCheck
      * @property string $txnTime
      * @property string $currencyCode
-     * @property \OptimalPayments\Error $error
+     * @property \Paysafe\Error $error
      * @property string $status
      */
 
@@ -73,8 +73,8 @@
         /**
          *
          * @param type $linkName
-         * @return \OptimalPayments\HostedPayment\Link
-         * @throws OptimalException
+         * @return \Paysafe\HostedPayment\Link
+         * @throws PaysafeException
          */
         public function getLink( $linkName ) {
             if (!empty($this->link)) {

@@ -29,9 +29,9 @@ namespace Paysafe\CardPayments;
  * @property string $txnTime
  * @property string $status
  * @property int[] $riskReasonCode
- * @property \OptimalPayments\CardPayments\AcquirerResponse $acquirerRresponse
- * @property \OptimalPayments\Error $error
- * @property \OptimalPayments\Link[] $links
+ * @property \Paysafe\CardPayments\AcquirerResponse $acquirerRresponse
+ * @property \Paysafe\Error $error
+ * @property \Paysafe\Link[] $links
  * @property string $authorizationID
  */
 class AuthorizationReversal extends \Paysafe\JSONObject implements \Paysafe\Pageable

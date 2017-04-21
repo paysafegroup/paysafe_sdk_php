@@ -196,7 +196,7 @@ if ($_POST) {
         }
 
         die('Payment successful! ID: ' . $standalone->id);
-    } catch (Paysafe\NetbanxException $e) {
+    } catch (Paysafe\PaysafeException $e) {
         echo '<pre>';
         var_dump($e->getMessage());
         if ($e->fieldErrors) {

@@ -27,7 +27,7 @@ namespace Paysafe\ThreeDSecure;
  * @property int $paRes
  * @property string $customerIp
  * @property string $txnTime
- * @property \OptimalPayments\Error $error
+ * @property \Paysafe\Error $error
  * @property string $status
  * @property string $threeDResult
  * @property string $signatureStatus

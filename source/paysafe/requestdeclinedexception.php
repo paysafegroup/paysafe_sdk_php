@@ -20,6 +20,6 @@
 
 namespace Paysafe;
 
-class RequestDeclinedException extends NetbanxException
+class RequestDeclinedException extends PaysafeException
 {
 }

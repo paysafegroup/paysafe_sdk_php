@@ -82,7 +82,7 @@ if ($_POST) {
             die;
         }
         die('Payment successful! ID: ' . $threedsecure->id);
-    } catch (Paysafe\NetbanxException $e) {
+    } catch (Paysafe\PaysafeException $e) {
         echo '<pre>';
         var_dump($e->getMessage());
         if ($e->fieldErrors) {

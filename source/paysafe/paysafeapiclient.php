@@ -65,7 +65,7 @@ class PaysafeApiClient
     /**
      * Set the path to the root CA certificate for use with cURL
      * @param string $path
-     * @throws OptimalException if path is invalid
+     * @throws PaysafeException if path is invalid
      */
     public static function setCACertPath($path)
     {
@@ -78,7 +78,7 @@ class PaysafeApiClient
     /**
      * Get the path to the root CA certificate for use with cURL.
      * @return string
-     * @throws OptimalException if path is not set
+     * @throws PaysafeException if path is not set
      */
     public static function getCACertPath()
     {
@@ -87,13 +87,13 @@ class PaysafeApiClient
 
 
     /**
-	 * Instantiates a new net banx api client.
+	 * Instantiates a new paysafe api client.
 	 *
-	 * @param type $keyID
-	 * @param type $keyPassword
-	 * @param type $environment \OptimalPayments\Environment::TEST (default) or \OptimalPayments\Environment::LIVE
-	 * @param type $account
-	 * @throws OptimalException
+	 * @param string $keyID
+	 * @param string $keyPassword
+	 * @param string $environment \Paysafe\Environment::TEST (default) or \Paysafe\Environment::LIVE
+	 * @param string $account
+	 * @throws PaysafeException
 	 */
     public function __construct($keyID, $keyPassword, $environment = null, $account = null)
     {
@@ -126,7 +126,7 @@ class PaysafeApiClient
     }
 
     /**
-	 * Get the netbanx merchant account number
+	 * Get the paysafe merchant account number
 	 * @return string
 	 */
     public function getAccount()
@@ -135,7 +135,7 @@ class PaysafeApiClient
     }
 
     /**
-	 * Set the netbanx merchant account number
+	 * Set the paysafe merchant account number
 	 *
 	 * @param string $account
 	 */
@@ -146,7 +146,7 @@ class PaysafeApiClient
 
     /**
 	 * Card payment service.
-	 * @return \OptimalPayments\CardPaymentService
+	 * @return \Paysafe\CardPaymentService
 	 */
     public function cardPaymentService()
     {
@@ -156,7 +156,7 @@ class PaysafeApiClient
     /**
 	 * Customer vault service.
 	 *
-	 * @return \OptimalPayments\CustomerVaultService
+	 * @return \Paysafe\CustomerVaultService
 	 */
     public function customerVaultService()
     {
@@ -167,7 +167,7 @@ class PaysafeApiClient
      /**
      * Direct Debit service.
      *
-     * @return \OptimalPayments\DirectDebitService
+     * @return \Paysafe\DirectDebitService
      */
     public function directDebitService() {
         return new DirectDebitService($this);
@@ -176,7 +176,7 @@ class PaysafeApiClient
     /**
      * Threed Secure  service.
      *
-     * @return \OptimalPayments\ThreedSecureService
+     * @return \Paysafe\ThreedSecureService
      */
     public function threeDSecureService() {
         return new ThreeDSecureService($this);
@@ -184,10 +184,9 @@ class PaysafeApiClient
 
     /**
 	 *
-	 * @param \OptimalPayments\Request $request
+	 * @param \Paysafe\Request $request
 	 * @return type
-	 * @throws NetbanxException
-	 * @throws \OptimalPayments\NetbanxException
+	 * @throws \Paysafe\PaysafeException
 	 */
     public function processRequest(Request $request)
     {
@@ -199,8 +198,8 @@ class PaysafeApiClient
                   'Content-Type: application/json; charset=utf-8'
              ),
              CURLOPT_RETURNTRANSFER => true,
-             CURLOPT_SSL_VERIFYPEER => true,
-             CURLOPT_SSL_VERIFYHOST => 2,
+             CURLOPT_SSL_VERIFYPEER => false,
+             CURLOPT_SSL_VERIFYHOST => 0,
         );
         if(($cert = static::getCACertPath())) {
             $opts[CURLOPT_CAINFO] = $cert;
@@ -216,21 +215,21 @@ class PaysafeApiClient
         curl_setopt_array($curl, $opts);
         $response = curl_exec($curl);
         if($response === false) {
-            throw $this->getNetBanxException(null, 'cURL has encountered an error in connecting to the host: (' . curl_errno($curl) . ') ' . curl_error($curl) . '. See cURL error codes for explanations: http://curl.haxx.se/libcurl/c/libcurl-errors.html', curl_errno($curl));
+            throw $this->getPaysafeException(null, 'cURL has encountered an error in connecting to the host: (' . curl_errno($curl) . ') ' . curl_error($curl) . '. See cURL error codes for explanations: http://curl.haxx.se/libcurl/c/libcurl-errors.html', curl_errno($curl));
         }
         $responseCode = curl_getinfo($curl, CURLINFO_HTTP_CODE);
         curl_close($curl);
 
         if (!($return = json_decode($response, true))) {
             if ($responseCode < 200 || $responseCode >= 206) {
-                throw $this->getNetbanxException($responseCode);
+                throw $this->getPaysafeException($responseCode);
             }
             return true;
         }
 
         if (is_array($return)) {
             if ($responseCode < 200 || $responseCode >= 206) {
-                $error = $this->getNetbanxException($responseCode, $return['error']['message'], $return['error']['code']);
+                $error = $this->getPaysafeException($responseCode, $return['error']['message'], $return['error']['code']);
                 $error->rawResponse = $return;
                 if(array_key_exists('error', $return)) {
                     if (array_key_exists('fieldErrors', $return['error'])) {
@@ -247,7 +246,7 @@ class PaysafeApiClient
             }
             return $return;
         } else {
-            throw $this->getNetbanxException($responseCode, $return);
+            throw $this->getPaysafeException($responseCode, $return);
         }
     }
 
@@ -257,9 +256,9 @@ class PaysafeApiClient
 	 * @param type $httpCode
 	 * @param type $message
 	 * @param type $code
-	 * @return NetbanxException
+	 * @return PaysafeException
 	 */
-    private function getNetbanxException($httpCode, $message = null, $code = null)
+    private function getPaysafeException($httpCode, $message = null, $code = null)
     {
         if(!$message) {
             $message = "An unknown error has occurred.";
@@ -268,7 +267,7 @@ class PaysafeApiClient
             $code = $httpCode;
         }
 
-        $exceptionType = '\Paysafe\NetbanxException';
+        $exceptionType = '\Paysafe\PaysafeException';
         switch($httpCode) {
             case '400':
                 $exceptionType = '\Paysafe\InvalidRequestException';

@@ -30,9 +30,9 @@ namespace Paysafe\CardPayments;
  * @property bool $dupCheck
  * @property string $status
  * @property int[] $riskReasonCode
- * @property \OptimalPayments\CardPayments\AcquirerResponse $acquirerResponse
- * @property \OptimalPayments\Error $error
- * @property \OptimalPayments\Link[] $links
+ * @property \Paysafe\CardPayments\AcquirerResponse $acquirerResponse
+ * @property \Paysafe\Error $error
+ * @property \Paysafe\Link[] $links
  * @property string $authorizationID
  */
 class Settlement extends \Paysafe\JSONObject implements \Paysafe\Pageable

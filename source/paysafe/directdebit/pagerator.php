@@ -27,7 +27,7 @@
          * Parse the response for the result set and next page.
          *
          * @param type $data
-         * @throws OptimalException
+         * @throws PaysafeException
          */
         protected function parseResponse( $data ) {
             if (!array_key_exists($this->arrayKey, $data)) {

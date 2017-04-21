@@ -31,7 +31,7 @@ class JSONObject {
     /**
      *
      * @param array $fields
-     * @throws OptimalException
+     * @throws PaysafeException
      */
     public function setOptionalFields($fields) {
         if (!is_array($fields)) {
@@ -47,7 +47,7 @@ class JSONObject {
     /**
      *
      * @param array $fields
-     * @throws OptimalException
+     * @throws PaysafeException
      */
     public function setRequiredFields($fields) {
         if (!is_array($fields)) {
@@ -63,8 +63,8 @@ class JSONObject {
     /**
      *
      * @param array $params
-     * @throws \OptimalPayments\OptimalException
-     * @throws OptimalException
+     * @throws \Paysafe\PaysafeException
+     * @throws PaysafeException
      */
     public function __construct($params = null) {
         if ($params == null) {
@@ -211,7 +211,7 @@ class JSONObject {
     /**
      *
      * @return array ready for serialization
-     * @throws OptimalException
+     * @throws PaysafeException
      */
     final public function jsonSerialize() {
         $this->checkRequiredFields();

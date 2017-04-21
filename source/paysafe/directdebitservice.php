@@ -32,7 +32,7 @@ class DirectDebitService
 {
 
     /**
-     * @var OptimalApiClient
+     * @var PaysafeApiClient
      */
     private $client;
 
@@ -48,7 +48,7 @@ class DirectDebitService
     /**
      * Initialize the Direct Debit service.
      *
-     * @param \OptimalPayments\OptimalApiClient $client
+     * @param \Paysafe\PaysafeApiClient $client
      */
     public function __construct( PaysafeApiClient $client )
     {
@@ -59,8 +59,7 @@ class DirectDebitService
      * Monitor.
      *
      * @return bool true if successful
-     * @throws OptimalException
-     * @throws NetbanxException
+     * @throws PaysafeException
      * The following request verifies that the service is up and accessible from your network.
      */
     public function monitor()
@@ -76,10 +75,9 @@ class DirectDebitService
 
     /**
      * Submit purchase
-     * @param \OptimalPayments\DirectDebit\Purchase $purchase
-     * @return \OptimalPayments\DirectDebit\Purchase
-     * @throws OptimalException
-     * @throws NetbanxException
+     * @param \Paysafe\DirectDebit\Purchase $purchase
+     * @return \Paysafe\DirectDebit\Purchase
+     * @throws PaysafeException
      */
     public function submit( DirectDebit\Purchase $purchase )
     {
@@ -102,10 +100,9 @@ class DirectDebitService
     /**
      * Process Purchase using ACH with and without payment token.
      *
-     * @param \OptimalPayments\DirectDebit\Purchase $purchase
-     * @return \OptimalPayments\DirectDebit\Purchase
-     * @throws OptimalException
-     * @throws NetbanxException
+     * @param \Paysafe\DirectDebit\Purchase $purchase
+     * @return \Paysafe\DirectDebit\Purchase
+     * @throws PaysafeException
      */
     private function submitPurchaseACH( DirectDebit\Purchase $purchase )
     {
@@ -144,10 +141,9 @@ class DirectDebitService
     /**
      * Process Purchase using EFT without payment token.
      *
-     * @param \OptimalPayments\DirectDebit\Purchase $purchase
-     * @return \OptimalPayments\DirectDebit\Purchase
-     * @throws OptimalException
-     * @throws NetbanxException
+     * @param \Paysafe\DirectDebit\Purchase $purchase
+     * @return \Paysafe\DirectDebit\Purchase
+     * @throws PaysafeException
      */
     private function submitPurchaseEFT( DirectDebit\Purchase $purchase )
     {
@@ -186,10 +182,9 @@ class DirectDebitService
     /**
      * Process Purchase using BACS without payment token.
      *
-     * @param \OptimalPayments\DirectDebit\Purchase $purchase
-     * @return \OptimalPayments\DirectDebit\Purchase
-     * @throws OptimalException
-     * @throws NetbanxException
+     * @param \Paysafe\DirectDebit\Purchase $purchase
+     * @return \Paysafe\DirectDebit\Purchase
+     * @throws PaysafeException
      */
     private function submitPurchaseBACS( DirectDebit\Purchase $purchase )
     {
@@ -228,10 +223,9 @@ class DirectDebitService
     /**
      * Process Purchase using SEPA without payment token.
      *
-     * @param \OptimalPayments\DirectDebit\Purchase $purchase
-     * @return \OptimalPayments\DirectDebit\Purchase
-     * @throws OptimalException
-     * @throws NetbanxException
+     * @param \Paysafe\DirectDebit\Purchase $purchase
+     * @return \Paysafe\DirectDebit\Purchase
+     * @throws PaysafeException
      */
     private function submitPurchaseSEPA( DirectDebit\Purchase $purchase )
     {
@@ -270,10 +264,9 @@ class DirectDebitService
     /**
      * Cancel Purchase.
      *
-     * @param \OptimalPayments\DirectDebit\Purchase $purchase
-     * @return \OptimalPayments\DirectDebit\Purchase
-     * @throws OptimalException
-     * @throws NetbanxException
+     * @param \Paysafe\DirectDebit\Purchase $purchase
+     * @return \Paysafe\DirectDebit\Purchase
+     * @throws PaysafeException
      */
     public function cancelPurchase( DirectDebit\Purchase $purchase )
     {
@@ -293,10 +286,9 @@ class DirectDebitService
     /**
      * Lookup Purchase.
      *
-     * @param \OptimalPayments\DirectDebit\Purchase $purchase
-     * @return \OptimalPayments\DirectDebit\Purchase
-     * @throws OptimalException
-     * @throws NetbanxException
+     * @param \Paysafe\DirectDebit\Purchase $purchase
+     * @return \Paysafe\DirectDebit\Purchase
+     * @throws PaysafeException
      */
     public function getPurchase( DirectDebit\Purchase $purchase )
     {
@@ -315,10 +307,9 @@ class DirectDebitService
     /**
      * Lookup Purchase.
      *
-     * @param \OptimalPayments\DirectDebit\Purchase $purchase
-     * @return \OptimalPayments\DirectDebit\Purchase
-     * @throws OptimalException
-     * @throws NetbanxException
+     * @param \Paysafe\DirectDebit\Purchase $purchase
+     * @return \Paysafe\DirectDebit\Purchase
+     * @throws PaysafeException
      */
     public function getPurchases( DirectDebit\Purchase $purchase, DirectDebit\Filter $filter )
     {
@@ -361,10 +352,9 @@ class DirectDebitService
 
     /**
      * Submit Standalone Cedits
-     * @param \OptimalPayments\DirectDebit\StandaloneCredits $standalonecredits
-     * @return \OptimalPayments\DirectDebit\StandaloneCredits
-     * @throws OptimalException
-     * @throws NetbanxException
+     * @param \Paysafe\DirectDebit\StandaloneCredits $standalonecredits
+     * @return \Paysafe\DirectDebit\StandaloneCredits
+     * @throws PaysafeException
      */
     public function standaloneCredits( DirectDebit\StandaloneCredits $standalonecredits )
     {
@@ -383,10 +373,9 @@ class DirectDebitService
 
     /**
      * Process Standalone Credits using ACH with and without payment token.
-     * @param \OptimalPayments\DirectDebit\StandaloneCredits $standalonecredits
-     * @return \OptimalPayments\DirectDebit\StandaloneCredits
-     * @throws OptimalException
-     * @throws NetbanxException
+     * @param \Paysafe\DirectDebit\StandaloneCredits $standalonecredits
+     * @return \Paysafe\DirectDebit\StandaloneCredits
+     * @throws PaysafeException
      */
     private function standalonecreditsACH( DirectDebit\StandaloneCredits $standalonecredits )
     {
@@ -422,10 +411,9 @@ class DirectDebitService
     /**
      * Process Standalone Credits using EFT without payment token.
      *
-     * @param \OptimalPayments\DirectDebit\StandaloneCredits $standalonecredits
-     * @return \OptimalPayments\DirectDebit\StandaloneCredits
-     * @throws OptimalException
-     * @throws NetbanxException
+     * @param \Paysafe\DirectDebit\StandaloneCredits $standalonecredits
+     * @return \Paysafe\DirectDebit\StandaloneCredits
+     * @throws PaysafeException
      */
     private function standalonecreditsEFT( DirectDebit\StandaloneCredits $standalonecredits )
     {
@@ -463,10 +451,9 @@ class DirectDebitService
     /**
      * Process Standalone Credits using BACS without payment token.
      *
-     * @param \OptimalPayments\DirectDebit\StandaloneCredits $standalonecredits
-     * @return \OptimalPayments\DirectDebit\StandaloneCredits
-     * @throws OptimalException
-     * @throws NetbanxException
+     * @param \Paysafe\DirectDebit\StandaloneCredits $standalonecredits
+     * @return \Paysafe\DirectDebit\StandaloneCredits
+     * @throws PaysafeException
      */
     private function standalonecreditsBACS( DirectDebit\StandaloneCredits $standalonecredits )
     {
@@ -501,10 +488,9 @@ class DirectDebitService
 
     /**
      * Cancel StandaloneCredits.
-     * @param \OptimalPayments\DirectDebit\StandaloneCredits $standalonecredits
-     * @return \OptimalPayments\DirectDebit\StandaloneCredits
-     * @throws OptimalException
-     * @throws NetbanxException
+     * @param \Paysafe\DirectDebit\StandaloneCredits $standalonecredits
+     * @return \Paysafe\DirectDebit\StandaloneCredits
+     * @throws PaysafeException
      */
     public function cancelStandalonecredits( DirectDebit\StandaloneCredits $standalonecredits )
     {
@@ -524,10 +510,9 @@ class DirectDebitService
 
     /**
      * Lookup StandaloneCredits.
-     * @param \OptimalPayments\DirectDebit\StandaloneCredits $standalonecredits
-     * @return \OptimalPayments\DirectDebit\StandaloneCredits
-     * @throws OptimalException
-     * @throws NetbanxException
+     * @param \Paysafe\DirectDebit\StandaloneCredits $standalonecredits
+     * @return \Paysafe\DirectDebit\StandaloneCredits
+     * @throws PaysafeException
      */
     public function getStandaloneCredit( DirectDebit\StandaloneCredits $standalonecredits )
     {
@@ -545,10 +530,9 @@ class DirectDebitService
 
     /**
      * Lookup StandaloneCredits.
-     * @param \OptimalPayments\DirectDebit\StandaloneCredits $standalonecredits
-     * @return \OptimalPayments\DirectDebit\StandaloneCredits
-     * @throws OptimalException
-     * @throws NetbanxException
+     * @param \Paysafe\DirectDebit\StandaloneCredits $standalonecredits
+     * @return \Paysafe\DirectDebit\StandaloneCredits
+     * @throws PaysafeException
      */
     public function getStandaloneCredits( DirectDebit\StandaloneCredits $standalonecredits, DirectDebit\Filter $filter )
     {
