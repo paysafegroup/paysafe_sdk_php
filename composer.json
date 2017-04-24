@@ -19,6 +19,6 @@
     },
 
     "autoload" : {
-    	"files" : ["source/paysafe.php"]
+        "psr-4" : { "Paysafe\\" : "source/paysafe" }
     }
 }
