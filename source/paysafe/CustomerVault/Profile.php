@@ -29,6 +29,7 @@ namespace Paysafe\CustomerVault;
  * @property string $middleName
  * @property string $lastName
  * @property \Paysafe\CustomerVault\DateOfBirth $dateOfBirth
+ * @property \Paysafe\CustomerVault\Card $card
  * @property string $ip
  * @property string $gender
  * @property string $nationality
@@ -74,6 +75,7 @@ class Profile extends \Paysafe\JSONObject
          'cellPhone'=>'string',
          'paymentToken'=>'string',
          'addresses'=>'array:\Paysafe\CustomerVault\Address',
+		 'card' => '\Paysafe\CustomerVault\Card'
          'cards'=>'array:\Paysafe\CustomerVault\Card',
          'error' => '\Paysafe\Error',
          'links' => 'array:\Paysafe\Link',

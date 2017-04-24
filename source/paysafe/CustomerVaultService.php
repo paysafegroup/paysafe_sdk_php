@@ -86,6 +86,7 @@ class CustomerVaultService
             'email',
             'phone',
             'cellPhone',
+			'card',
             'cards'
         ));
 
