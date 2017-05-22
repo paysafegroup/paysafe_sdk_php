@@ -14,11 +14,17 @@
 
     ],
     "require": {
-        "php": ">=5.3.0",
+        "php": ">=5.6",
         "lib-curl" : "*"
     },
 
     "autoload" : {
         "psr-4" : { "Paysafe\\" : "source/paysafe" }
+    },
+    "require-dev": {
+        "phpunit/phpunit": "^5.7"
+    },
+    "scripts": {
+        "test": "phpunit tests"
     }
 }
