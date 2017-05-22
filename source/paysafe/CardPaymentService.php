@@ -85,7 +85,8 @@ class CardPaymentService
              'recurring',
              'merchantDescriptor',
              'accordD',
-             'description'
+             'description',
+             'splitpay',
         ));
 
         $request = new Request(array(
