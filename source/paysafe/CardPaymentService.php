@@ -190,7 +190,8 @@ class CardPaymentService
         $settlement->setRequiredFields(array('merchantRefNum'));
         $settlement->setOptionalFields(array(
              'amount',
-             'dupCheck'
+             'dupCheck',
+             'splitpay',
         ));
 
         $request = new Request(array(

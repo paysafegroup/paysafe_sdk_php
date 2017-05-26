@@ -378,6 +378,10 @@ class AuthorizationTest extends \PHPUnit_Framework_TestCase
             'settlements' => $settlements,
             'error' => $error,
             'links' => $links,
+            'splitpay' => [[
+                'linkedAccount' => 'link_account_id',
+                'amount' => 500,
+            ]],
         ];
         $auth = new Authorization($auth_array);
 

@@ -62,7 +62,8 @@ class Settlement extends \Paysafe\JSONObject implements \Paysafe\Pageable
          'acquirerResponse' => '\Paysafe\CardPayments\AcquirerResponse',
          'error' => '\Paysafe\Error',
          'links' => 'array:\Paysafe\Link',
-         'authorizationID' => 'string'
+         'authorizationID' => 'string',
+         'splitpay' => 'array:\Paysafe\CardPayments\SplitPay',
     );
 
 }
