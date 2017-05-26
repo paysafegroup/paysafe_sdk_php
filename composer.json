@@ -19,7 +19,7 @@
     },
 
     "autoload" : {
-        "psr-4" : { "Paysafe\\" : "source/paysafe" }
+        "files" : ["source/paysafe.php"]
     },
     "require-dev": {
         "phpunit/phpunit": "^5.7"
