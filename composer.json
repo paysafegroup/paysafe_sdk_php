@@ -20,5 +20,6 @@
 
     "autoload" : {
     	"files" : ["source/paysafe.php"]
-    }
+    },
+    "minimum-stability": "dev"
 }
