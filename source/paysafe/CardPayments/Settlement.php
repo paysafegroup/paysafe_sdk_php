@@ -34,6 +34,7 @@ namespace Paysafe\CardPayments;
  * @property \Paysafe\Error $error
  * @property \Paysafe\Link[] $links
  * @property string $authorizationID
+ * @property \Paysafe\CardPayments\SplitPay[] $splitpay
  */
 class Settlement extends \Paysafe\JSONObject implements \Paysafe\Pageable
 {
