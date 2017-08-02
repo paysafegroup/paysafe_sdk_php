@@ -76,6 +76,7 @@ class CardPaymentService
         ));
         $auth->setOptionalFields(array(
              'settleWithAuth',
+	     'profile',	
              'customerIp',
              'dupCheck',
              'description',
