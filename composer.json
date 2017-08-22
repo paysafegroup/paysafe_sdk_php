@@ -1,6 +1,5 @@
 {
     "name": "paysafegroup/paysafe_sdk_php",
-	"version": "1.0.1",
     "type": "library",
     "description": "PHP SDK for the Paysafe API",
     "keywords" : ["payment", "payment processing", "netbanx", "optimal", "sdk"],
