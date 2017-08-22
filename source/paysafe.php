@@ -33,9 +33,7 @@ if (!function_exists('curl_version')) {
 
 function __PaysafeAutoloader($className)
 {
-    // lc first will make the P in the Paysafe root namespace lower case
-    // the remainder of the path/file should match case of the namespace/class
-    $classPath = str_replace("\\", DIRECTORY_SEPARATOR, lcfirst($className));
+    $classPath = str_replace("\\", DIRECTORY_SEPARATOR, $className);
     if (($classFile = realpath(__DIR__ . DIRECTORY_SEPARATOR . $classPath . '.php'))) {
         require_once( $classFile );
     }
