@@ -18,25 +18,15 @@
  * OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
  */
 
-if (version_compare(PHP_VERSION, '5.3', '<')) {
-    /**
-	 * 5.3 Features Used:
-	 * late static bindings,
-	 * call_user_func on static methods with namespaces
-	 */
-    throw new Exception('PHP version >= 5.3 required for the Paysafe SDK.');
-}
+namespace Paysafe;
 
-if (!function_exists('curl_version')) {
-    throw new Exception('CURL is required for the Paysafe SDK.');
-}
-
-function __PaysafeAutoloader($className)
+class Environment
 {
-    $classPath = str_replace("\\", DIRECTORY_SEPARATOR, $className);
-    if (($classFile = realpath(__DIR__ . DIRECTORY_SEPARATOR . $classPath . '.php'))) {
-        require_once( $classFile );
+    const TEST = "PAYSAFE:TEST";
+    const LIVE = "PAYSAFE:LIVE";
+
+    public function __construct()
+    {
+        throw new PaysafeException('This class should not be instantiated, use statically only.');
     }
 }
-
-spl_autoload_register('__PaysafeAutoloader');

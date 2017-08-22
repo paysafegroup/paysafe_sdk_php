@@ -18,25 +18,10 @@
  * OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
  */
 
-if (version_compare(PHP_VERSION, '5.3', '<')) {
-    /**
-	 * 5.3 Features Used:
-	 * late static bindings,
-	 * call_user_func on static methods with namespaces
-	 */
-    throw new Exception('PHP version >= 5.3 required for the Paysafe SDK.');
-}
+namespace Paysafe;
 
-if (!function_exists('curl_version')) {
-    throw new Exception('CURL is required for the Paysafe SDK.');
-}
-
-function __PaysafeAutoloader($className)
+class PaysafeException extends \Exception
 {
-    $classPath = str_replace("\\", DIRECTORY_SEPARATOR, $className);
-    if (($classFile = realpath(__DIR__ . DIRECTORY_SEPARATOR . $classPath . '.php'))) {
-        require_once( $classFile );
-    }
+    public $fieldErrors;
+    public $links;
 }
-
-spl_autoload_register('__PaysafeAutoloader');

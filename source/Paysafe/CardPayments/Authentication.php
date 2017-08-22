@@ -1,6 +1,6 @@
 <?php
 /*
- * Copyright (c) 2014 Paysafe
+ * Copyright (c) 2014 OptimalPayments
  *
  * Permission is hereby granted, free of charge, to any person obtaining a copy of this software and
  * associated documentation files (the "Software"), to deal in the Software without restriction,
@@ -18,25 +18,25 @@
  * OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
  */
 
-if (version_compare(PHP_VERSION, '5.3', '<')) {
-    /**
-	 * 5.3 Features Used:
-	 * late static bindings,
-	 * call_user_func on static methods with namespaces
-	 */
-    throw new Exception('PHP version >= 5.3 required for the Paysafe SDK.');
-}
+namespace Paysafe\CardPayments;
 
-if (!function_exists('curl_version')) {
-    throw new Exception('CURL is required for the Paysafe SDK.');
-}
-
-function __PaysafeAutoloader($className)
+/**
+ * @property int $eci
+ * @property string $cavv
+ * @property string $xid
+ * @property string $threeDEnrollment
+ * @property string $threeDResult
+ * @property string $signatureStatus
+ */
+class Authentication extends \Paysafe\JSONObject
 {
-    $classPath = str_replace("\\", DIRECTORY_SEPARATOR, $className);
-    if (($classFile = realpath(__DIR__ . DIRECTORY_SEPARATOR . $classPath . '.php'))) {
-        require_once( $classFile );
-    }
-}
+    protected static $fieldTypes = array(
+         'eci' => 'int',
+         'cavv' => 'string',
+         'xid' => 'string',
+         'threeDEnrollment' => 'string',
+         'threeDResult' => 'string',
+         'signatureStatus' => 'string',
+    );
 
-spl_autoload_register('__PaysafeAutoloader');
+}

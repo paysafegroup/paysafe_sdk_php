@@ -1,6 +1,7 @@
 <?php
+
 /*
- * Copyright (c) 2014 Paysafe
+ * Copyright (c) 2014 OptimalPayments
  *
  * Permission is hereby granted, free of charge, to any person obtaining a copy of this software and
  * associated documentation files (the "Software"), to deal in the Software without restriction,
@@ -18,25 +19,42 @@
  * OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
  */
 
-if (version_compare(PHP_VERSION, '5.3', '<')) {
-    /**
-	 * 5.3 Features Used:
-	 * late static bindings,
-	 * call_user_func on static methods with namespaces
-	 */
-    throw new Exception('PHP version >= 5.3 required for the Paysafe SDK.');
-}
+namespace Paysafe\ThreeDSecure;
 
-if (!function_exists('curl_version')) {
-    throw new Exception('CURL is required for the Paysafe SDK.');
-}
-
-function __PaysafeAutoloader($className)
+/**
+ * @property string $paymentToken
+ * @property string $cardNum
+ * @property string $type
+ * @property string $lastDigits
+ * @property \Paysafe\ThreeDSecure\CardExpiry $cardExpiry
+ * @property string $cvv
+ * @property string $track1
+ * @property string $track2
+ */
+class Card extends \Paysafe\JSONObject
 {
-    $classPath = str_replace("\\", DIRECTORY_SEPARATOR, $className);
-    if (($classFile = realpath(__DIR__ . DIRECTORY_SEPARATOR . $classPath . '.php'))) {
-        require_once( $classFile );
-    }
-}
 
-spl_autoload_register('__PaysafeAutoloader');
+    protected static $fieldTypes = array(
+        'paymentToken' => 'string',
+        'cardNum' => 'string',
+        'cardType' => array(
+            'AM',
+            'DC',
+            'DI',
+            'JC',
+            'MC',
+            'MD',
+            'SF',
+            'SO',
+            'VI',
+            'VD',
+            'VE'
+        ),
+        'lastDigits' => 'string',
+        'cardExpiry' => '\Paysafe\ThreeDSecure\CardExpiry',
+        'cvv' => 'string',
+        'track1' => 'string',
+        'track2' => 'string'
+    );
+
+}

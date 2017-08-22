@@ -1,6 +1,6 @@
 <?php
 /*
- * Copyright (c) 2014 Paysafe
+ * Copyright (c) 2014 OptimalPayments
  *
  * Permission is hereby granted, free of charge, to any person obtaining a copy of this software and
  * associated documentation files (the "Software"), to deal in the Software without restriction,
@@ -18,25 +18,19 @@
  * OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
  */
 
-if (version_compare(PHP_VERSION, '5.3', '<')) {
-    /**
-	 * 5.3 Features Used:
-	 * late static bindings,
-	 * call_user_func on static methods with namespaces
-	 */
-    throw new Exception('PHP version >= 5.3 required for the Paysafe SDK.');
-}
+namespace Paysafe\CardPayments;
 
-if (!function_exists('curl_version')) {
-    throw new Exception('CURL is required for the Paysafe SDK.');
-}
-
-function __PaysafeAutoloader($className)
+/**
+ * @property string $firstName
+ * @property string $lastName
+ * @property email $email
+ */
+class Profile extends \Paysafe\JSONObject
 {
-    $classPath = str_replace("\\", DIRECTORY_SEPARATOR, $className);
-    if (($classFile = realpath(__DIR__ . DIRECTORY_SEPARATOR . $classPath . '.php'))) {
-        require_once( $classFile );
-    }
-}
+    protected static $fieldTypes = array(
+         'firstName' => 'string',
+         'lastName' => 'string',
+         'email' => 'email',
+    );
 
-spl_autoload_register('__PaysafeAutoloader');
+}
