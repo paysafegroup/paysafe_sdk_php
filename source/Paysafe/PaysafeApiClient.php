@@ -183,15 +183,6 @@ class PaysafeApiClient
     }
 
     /**
-     * Account Management  service.
-     *
-     * @return \Paysafe\AccountManagementService
-     */
-    public function accountManagementService() {
-        return new AccountManagementService($this);
-    }
-
-    /**
 	 *
 	 * @param \Paysafe\Request $request
 	 * @return type
