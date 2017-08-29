@@ -29,6 +29,26 @@ class AccountManagementService
         $this->client = $client;
     }
 
+    /**
+     * Monitor.
+     *
+     * @return bool true if successful
+     * @throws \Paysafe\PaysafeException
+     */
+    public function monitor()
+    {
+        $request = new Request(array(
+            'method' => Request::GET,
+            'uri' => 'accountmanagement/monitor'
+        ));
+
+        $response = $this->client->processRequest($request);
+        if (!isset($response['status'])) {
+            return false;
+        }
+        return ($response['status'] == 'READY');
+    }
+
     public function transferDebit(Transfer $transfer)
     {
         $request = new Request(array(
