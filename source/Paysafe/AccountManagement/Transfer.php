@@ -2,6 +2,22 @@
 
 namespace Paysafe\AccountManagement;
 
+use Paysafe\PaysafeException;
+
+/**
+ * Class Transfer
+ * @package Paysafe\AccountManagement
+ *
+ * @property string $id
+ * @property int $amount
+ * @property string $detail
+ * @property bool $dupCheck
+ * @property string $linkedAccount
+ * @property string $merchantRefNum
+ * @property \Paysafe\Error $error
+ * @property string $status
+ * @property \Paysafe\Link[] $links
+ */
 class Transfer extends \Paysafe\JSONObject implements \Paysafe\Pageable {
 
     public static function getPageableArrayKey() {
@@ -29,18 +45,18 @@ class Transfer extends \Paysafe\JSONObject implements \Paysafe\Pageable {
 
     /**
      *
-     * @param type $linkName
-     * @return \Paysafe\HostedPayment\Link
+     * @param string $linkName
+     * @return \Paysafe\Link
      * @throws PaysafeException
      */
     public function getLink( $linkName ) {
-        if (!empty($this->link)) {
-            foreach ($this->link as $link) {
+        if (!empty($this->links)) {
+            foreach ($this->links as $link) {
                 if ($link->rel == $linkName) {
                     return $link;
                 }
             }
         }
-        throw new PaysafeException("Link $linkName not found in purchase.");
+        throw new PaysafeException("Link $linkName not found in Transfer.");
     }
 }
