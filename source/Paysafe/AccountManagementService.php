@@ -7,7 +7,7 @@ use Paysafe\AccountManagement\Transfer;
 class AccountManagementService
 {
     /**
-     * @var PaysafeApiClient
+     * @var \Paysafe\PaysafeApiClient
      */
     private $client;
 
@@ -49,8 +49,24 @@ class AccountManagementService
         return ($response['status'] == 'READY');
     }
 
+    /**
+     * Move funds from the account identified in the API endpoint URI to the linked account in the body of the request
+     * @param \Paysafe\AccountManagement\Transfer $transfer
+     * @return \Paysafe\AccountManagement\Transfer
+     * @throws \Paysafe\PaysafeException
+     */
     public function transferDebit(Transfer $transfer)
     {
+        $transfer->setRequiredFields(array(
+            'amount',
+            'linkedAccount',
+            'merchantRefNum',
+        ));
+        $transfer->setOptionalFields(array(
+            'detail',
+            'dupCheck',
+        ));
+
         $request = new Request(array(
                'method' => Request::POST,
                'uri' => $this->prepareURI($this->debitPath),
@@ -64,6 +80,16 @@ class AccountManagementService
 
     public function transferCredit(Transfer $transfer)
     {
+        $transfer->setRequiredFields(array(
+            'amount',
+            'linkedAccount',
+            'merchantRefNum',
+        ));
+        $transfer->setOptionalFields(array(
+            'detail',
+            'dupCheck',
+        ));
+
         $request = new Request(array(
                'method' => Request::POST,
                'uri' => $this->prepareURI($this->creditPath),
