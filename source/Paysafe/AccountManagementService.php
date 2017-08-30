@@ -78,6 +78,11 @@ class AccountManagementService
         return new Transfer($response);
     }
 
+    /**
+     * Move funds from the linked account in the body of the request to the account identified in the API endpoint URI.
+     * @param \Paysafe\AccountManagement\Transfer $transfer
+     * @return \Paysafe\AccountManagement\Transfer
+     */
     public function transferCredit(Transfer $transfer)
     {
         $transfer->setRequiredFields(array(
