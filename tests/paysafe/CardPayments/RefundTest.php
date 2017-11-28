@@ -47,6 +47,17 @@ class RefundTest extends \PHPUnit_Framework_TestCase
         $this->assertThat($refund->toJson(), $this->equalTo('{}'));
     }
 
+    public function testSetBogusProperty()
+    {
+        $refund = new Refund();
+
+        // when calling the setter on a property absent from the fieldTypes array, we expect an exception
+        $this->expectException(PaysafeException::class);
+        $this->expectExceptionCode(0);
+        $this->expectExceptionMessage('Invalid property bogusproperty for class ' . Refund::class . '.');
+        $refund->bogusproperty = new \stdClass();
+    }
+
     public function testConstructWithValidProperty()
     {
         $refund = new Refund(['merchantRefNum' => 'foo']);
@@ -139,6 +150,17 @@ class RefundTest extends \PHPUnit_Framework_TestCase
             'href' => 'gopher://foo.ba', // 'url'
         ]];
         $settlementID = 'settlementID'; // string
+        // array:\Paysafe\CardPayments\SplitPay
+        $splitpay = [
+            [
+                'linkedAccount' => 'link_account_id_1',
+                'amount' => 500,
+            ],
+            [
+                'linkedAccount' => 'link_account_id_2',
+                'amount' => 600,
+            ],
+        ];
 
         $refund_array = [
             'id' => $id,
@@ -153,6 +175,7 @@ class RefundTest extends \PHPUnit_Framework_TestCase
             'error' => $error,
             'links' => $links,
             'settlementID' => $settlementID,
+            'splitpay' => $splitpay,
         ];
 
         $refund = new Refund($refund_array);
@@ -163,5 +186,83 @@ class RefundTest extends \PHPUnit_Framework_TestCase
          * our understanding of the data requirements in Authorization
          */
         $this->assertThat($refund->toJson(), $this->equalTo(json_encode($refund_array)));
+    }
+
+    public function testConstructEmptySplitPay()
+    {
+        $refund = new Refund([
+            'splitpay' => [[]],
+        ]);
+
+        $this->assertThat($refund->toJson(), $this->equalTo('{"splitpay":[{}]}'));
+    }
+
+    public function testSetEmptySplitPay()
+    {
+        $refund = new Refund();
+        $refund->splitpay = [[]];
+
+        $this->assertThat($refund->toJson(), $this->equalTo('{"splitpay":[{}]}'));
+    }
+
+    public function testConstructBadSplitPay()
+    {
+        $bad_sp_array = ['linkedAccount' => new \stdClass()];
+
+        $this->expectException(PaysafeException::class);
+        $this->expectExceptionCode(0);
+        $this->expectExceptionMessage('Invalid value for property linkedAccount for class Paysafe\CardPayments\SplitPay.'
+            . ' String expected.');
+        $refund = new Refund([
+            'splitpay' => [$bad_sp_array],
+        ]);
+    }
+
+    public function testConstructSingleSPObjInsteadOfArray()
+    {
+        $this->expectException(PaysafeException::class);
+        $this->expectExceptionCode(0);
+        $this->expectExceptionMessage('Invalid value for property splitpay for class ' . Refund::class
+            . '. Array expected.');
+
+        $refund = new Refund([
+            'splitpay' => new SplitPay(),
+        ]);
+    }
+
+    public function testConstructGoodSP()
+    {
+        $refund = new Refund([
+            'splitpay' => [[
+                'linkedAccount' => 'link_account_id',
+                'amount' => 500,
+            ]]
+        ]);
+
+        $this->assertThat($refund->toJson(),
+            $this->equalTo('{"splitpay":[{"linkedAccount":"link_account_id","amount":500}]}'));
+    }
+
+    public function testSetGoodSP()
+    {
+        $refund = new Refund();
+        $refund->splitpay = [[
+            'linkedAccount' => 'link_account_id',
+            'amount' => 500,
+        ]];
+
+        $this->assertThat($refund->toJson(),
+            $this->equalTo('{"splitpay":[{"linkedAccount":"link_account_id","amount":500}]}'));
+    }
+
+    public function testSetSingleSPObjInsteadOfArray()
+    {
+        $this->expectException(PaysafeException::class);
+        $this->expectExceptionCode(0);
+        $this->expectExceptionMessage('Invalid value for property splitpay for class ' . Refund::class
+            . '. Array expected.');
+
+        $refund = new Refund();
+        $refund->splitpay = new SplitPay();
     }
 }
