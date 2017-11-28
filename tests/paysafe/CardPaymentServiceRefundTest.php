@@ -100,4 +100,36 @@ class CardPaymentServiceRefundTest extends \PHPUnit_Framework_TestCase
         unset($expected_params['settlementID']);
         $this->assertThat($retval->toJson(), $this->equalTo(json_encode($expected_params)));
     }
+
+    /*
+     * This test builds upon the information we learned in testRefundInvalidField. This time, we will include
+     * splitpay in the param list, and we will assert that it is still present in the Refund object returned
+     * by CardPaymentService::refund -- thus confirming that refund included splitpay in the optional field list
+     */
+    public function testRefundWithSplitPay()
+    {
+        $this->mock_api_client
+            ->expects($this->once())
+            ->method('processRequest')
+            ->with($this->isInstanceOf(Request::class))
+            ->will($this->returnCallback(function (Request $param) {
+                return json_decode($param->body->toJson(), true);
+            }));
+        $cps = new CardPaymentService($this->mock_api_client);
+
+        $refund_param_array = [
+            'settlementID' => 'settlementID',
+            'merchantRefNum' => 'merchantRefNum',
+            'splitpay' => [[
+                'linkedAccount' => 'linkedAccount',
+                'amount' => 5,
+            ]],
+        ];
+
+        $retval = $cps->refund(new Refund($refund_param_array));
+        $expected_params = $refund_param_array;
+        // we remove settlementID; refund() puts this value in URL and removes from body
+        unset($expected_params['settlementID']);
+        $this->assertThat($retval->toJson(), $this->equalTo(json_encode($expected_params)));
+    }
 }
