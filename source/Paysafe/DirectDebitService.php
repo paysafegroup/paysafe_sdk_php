@@ -125,7 +125,8 @@ class DirectDebitService
         $purchase->checkRequiredFields();
         $purchase->setOptionalFields(array(
             'customerIp',
-            'dupCheck'
+            'dupCheck',
+            'splitpay',
         ));
 
         $request = new Request(array(
@@ -166,7 +167,8 @@ class DirectDebitService
         $purchase->checkRequiredFields();
         $purchase->setOptionalFields(array(
             'customerIp',
-            'dupCheck'
+            'dupCheck',
+            'splitpay',
         ));
 
         $request = new Request(array(
