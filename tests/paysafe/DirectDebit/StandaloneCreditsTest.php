@@ -10,7 +10,7 @@ namespace Paysafe\DirectDebit;
 use Paysafe\Link;
 use Paysafe\PaysafeException;
 
-class StandAloneCreditsTest extends \PHPUnit_Framework_TestCase
+class StandaloneCreditsTest extends \PHPUnit_Framework_TestCase
 {
     public function testConstruct()
     {
