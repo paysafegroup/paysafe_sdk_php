@@ -40,6 +40,7 @@ use Paysafe\PaysafeException;
  * @property \Paysafe\Error $error
  * @property string $status
  * @property \Paysafe\Link[] $links
+ * @property \Paysafe\DirectDebit\SplitPay[] $splitpay
  */
 class StandaloneCredits extends \Paysafe\JSONObject implements \Paysafe\Pageable
 {
