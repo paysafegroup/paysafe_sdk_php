@@ -399,7 +399,8 @@ class DirectDebitService
         $standalonecredits->checkRequiredFields();
         $standalonecredits->setOptionalFields(array(
             'customerIp',
-            'dupCheck'
+            'dupCheck',
+            'splitpay',
         ));
         $request = new Request(array(
             'method' => Request::POST,
@@ -437,7 +438,8 @@ class DirectDebitService
         $standalonecredits->checkRequiredFields();
         $standalonecredits->setOptionalFields(array(
             'customerIp',
-            'dupCheck'
+            'dupCheck',
+            'splitpay',
         ));
 
         $request = new Request(array(

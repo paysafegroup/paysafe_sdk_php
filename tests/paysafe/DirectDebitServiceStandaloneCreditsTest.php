@@ -200,6 +200,88 @@ class DirectDebitServiceStandaloneCreditsTest extends \PHPUnit_Framework_TestCas
         $this->assertThat($retval->toJson(), $this->equalTo(json_encode($param_no_id)),
             'Did not receive expected return from DirectDebitService::standaloneCredits');
     }
+
+    /*
+     * This test builds upon the information we learned in testCreditAchNoTokenInvalidField. This time, we will include
+     * splitpay in the param list, and we will assert that it is still present in the StandaloneCredits object returned
+     * by DirectDebitService::standaloneCredits -- thus confirming that standaloneCreditsACH included splitpay in the
+     * optional field list
+     */
+    public function testCreditAchNoTokenWithSplitPay()
+    {
+        $this->mock_api_client
+            ->expects($this->once())
+            ->method('processRequest')
+            ->with($this->isInstanceOf(Request::class))
+            ->will($this->returnCallback(function (Request $param) {
+                return json_decode($param->body->toJson(), true);
+            }));
+        $dds = new DirectDebitService($this->mock_api_client);
+
+        $ach_credit_array = [
+            'id' => 'id is a valid param, but not in required or optional list',
+            'ach' => [
+                'accountType' => 'CHECKING',
+            ],
+            'profile' => [
+                'firstName' => 'firstname',
+                'lastName' => 'lastname',
+            ],
+            'merchantRefNum' => 'merchantrefnum',
+            'amount' => 555,
+            'billingDetails' => [
+                'zip' => '10007',
+            ],
+            'splitpay' => [[
+                'linkedAccount' => 'linkedAccount',
+                'amount' => 5,
+            ]],
+        ];
+
+        $retval = $dds->standaloneCredits(new StandaloneCredits($ach_credit_array));
+        $param_no_id = $ach_credit_array;
+        unset($param_no_id['id']);
+        $this->assertThat($retval->toJson(), $this->equalTo(json_encode($param_no_id)),
+            'Did not receive expected return from DirectDebitService::standaloneCredits');
+    }
+
+    /*
+     * This test builds upon the information we learned in testCreditAchWithTokenInvalidField. This time, we will include
+     * splitpay in the param list, and we will assert that it is still present in the StandaloneCredits object returned
+     * by DirectDebitService::standaloneCredits -- thus confirming that standaloneCreditsACH included splitpay in the
+     * optional field list
+     */
+    public function testCreditAchWithTokenWithSplitPay()
+    {
+        $this->mock_api_client
+            ->expects($this->once())
+            ->method('processRequest')
+            ->with($this->isInstanceOf(Request::class))
+            ->will($this->returnCallback(function (Request $param) {
+                return json_decode($param->body->toJson(), true);
+            }));
+        $dds = new DirectDebitService($this->mock_api_client);
+
+        $ach_credit_array = [
+            'id' => 'id is a valid param, but not in required or optional list',
+            'ach' => [
+                'paymentToken' => 'myspecialtoken',
+            ],
+            'merchantRefNum' => 'merchantrefnum',
+            'amount' => 555,
+            'splitpay' => [[
+                'linkedAccount' => 'linkedAccount',
+                'amount' => 5,
+            ]],
+        ];
+
+        $retval = $dds->standaloneCredits(new StandaloneCredits($ach_credit_array));
+        $param_no_id = $ach_credit_array;
+        unset($param_no_id['id']);
+        $this->assertThat($retval->toJson(), $this->equalTo(json_encode($param_no_id)),
+            'Did not receive expected return from DirectDebitService::standaloneCredits');
+    }
+
     /*
      * This is a test to confirm that the DirectDebitService sets the required parameters we expect for a
      * standaloneCredits call.
@@ -341,6 +423,87 @@ class DirectDebitServiceStandaloneCreditsTest extends \PHPUnit_Framework_TestCas
             ],
             'merchantRefNum' => 'merchantrefnum',
             'amount' => 555,
+        ];
+
+        $retval = $dds->standaloneCredits(new StandaloneCredits($eft_credit_array));
+        $param_no_id = $eft_credit_array;
+        unset($param_no_id['id']);
+        $this->assertThat($retval->toJson(), $this->equalTo(json_encode($param_no_id)),
+            'Did not receive expected return from DirectDebitService::standaloneCredits');
+    }
+
+    /*
+     * This test builds upon the information we learned in testCreditEftNoTokenInvalidField. This time, we will include
+     * splitpay in the param list, and we will assert that it is still present in the StandaloneCredits object returned
+     * by DirectDebitService::standaloneCredits -- thus confirming that standaloneCreditsEFT included splitpay in the
+     * optional field list
+     */
+    public function testCreditEftNoTokenWithSplitPay()
+    {
+        $this->mock_api_client
+            ->expects($this->once())
+            ->method('processRequest')
+            ->with($this->isInstanceOf(Request::class))
+            ->will($this->returnCallback(function (Request $param) {
+                return json_decode($param->body->toJson(), true);
+            }));
+        $dds = new DirectDebitService($this->mock_api_client);
+
+        $eft_credit_array = [
+            'id' => 'id is a valid param, but not in required or optional list',
+            'eft' => [
+                'accountHolderName' => 'accountHolderName',
+            ],
+            'profile' => [
+                'firstName' => 'firstname',
+                'lastName' => 'lastname',
+            ],
+            'merchantRefNum' => 'merchantrefnum',
+            'amount' => 555,
+            'billingDetails' => [
+                'zip' => '10007',
+            ],
+            'splitpay' => [[
+                'linkedAccount' => 'linkedAccount',
+                'amount' => 5,
+            ]],
+        ];
+
+        $retval = $dds->standaloneCredits(new StandaloneCredits($eft_credit_array));
+        $param_no_id = $eft_credit_array;
+        unset($param_no_id['id']);
+        $this->assertThat($retval->toJson(), $this->equalTo(json_encode($param_no_id)),
+            'Did not receive expected return from DirectDebitService::standaloneCredits');
+    }
+
+    /*
+     * This test builds upon the information we learned in testCreditEftWithTokenInvalidField. This time, we will include
+     * splitpay in the param list, and we will assert that it is still present in the StandaloneCredits object returned
+     * by DirectDebitService::standaloneCredits -- thus confirming that standaloneCreditsEFT included splitpay in the
+     * optional field list
+     */
+    public function testCreditEftWithTokenWithSplitPay()
+    {
+        $this->mock_api_client
+            ->expects($this->once())
+            ->method('processRequest')
+            ->with($this->isInstanceOf(Request::class))
+            ->will($this->returnCallback(function (Request $param) {
+                return json_decode($param->body->toJson(), true);
+            }));
+        $dds = new DirectDebitService($this->mock_api_client);
+
+        $eft_credit_array = [
+            'id' => 'id is a valid param, but not in required or optional list',
+            'eft' => [
+                'paymentToken' => 'myspecialtoken',
+            ],
+            'merchantRefNum' => 'merchantrefnum',
+            'amount' => 555,
+            'splitpay' => [[
+                'linkedAccount' => 'linkedAccount',
+                'amount' => 5,
+            ]],
         ];
 
         $retval = $dds->standaloneCredits(new StandaloneCredits($eft_credit_array));
