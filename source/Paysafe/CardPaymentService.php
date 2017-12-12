@@ -86,7 +86,8 @@ class CardPaymentService
              'recurring',
              'merchantDescriptor',
              'accordD',
-             'description'
+             'description',
+             'splitpay',
         ));
 
         $request = new Request(array(
@@ -190,7 +191,8 @@ class CardPaymentService
         $settlement->setRequiredFields(array('merchantRefNum'));
         $settlement->setOptionalFields(array(
              'amount',
-             'dupCheck'
+             'dupCheck',
+             'splitpay',
         ));
 
         $request = new Request(array(
@@ -242,7 +244,8 @@ class CardPaymentService
         $refund->setRequiredFields(array('merchantRefNum'));
         $refund->setOptionalFields(array(
              'amount',
-             'dupCheck'
+             'dupCheck',
+             'splitpay',
         ));
 
         $request = new Request(array(
