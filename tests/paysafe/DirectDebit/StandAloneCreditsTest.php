@@ -245,7 +245,7 @@ class StandAloneCreditsTest extends \PHPUnit_Framework_TestCase
          * This may seem like a trivial test, but behind the scenes toJson triggers data validation. Bad data will
          * result in an exception.
          * Not only does this test ensure the proper operation of the json encoding in JSONObject, but it validates
-         * our understanding of the data requirements in Authorization
+         * our understanding of the data requirements in StandAloneCredits
          */
         $this->assertThat($sac->toJson(), $this->equalTo(json_encode($sac_array)));
     }
