@@ -107,7 +107,7 @@ class StandAloneCreditsTest extends \PHPUnit_Framework_TestCase
         $this->expectExceptionCode(0);
         $this->expectExceptionMessage('Invalid value for property merchantRefNum for class '
             . StandaloneCredits::class . '. String expected.');
-        $refund = new StandaloneCredits($sac_array);
+        $sac = new StandaloneCredits($sac_array);
     }
 
     public function testSetInvalidValue()
@@ -219,6 +219,17 @@ class StandAloneCreditsTest extends \PHPUnit_Framework_TestCase
             'rel' => 'rel', // 'string',
             'href' => 'gopher://foo.ba', // 'url'
         ]];
+        // array:\Paysafe\DirectDebit\SplitPay
+        $splitpay = [
+            [
+                'linkedAccount' => 'link_account_id_1',
+                'amount' => 500,
+            ],
+            [
+                'linkedAccount' => 'link_account_id_2',
+                'amount' => 600,
+            ],
+        ];
 
         $sac_array = [
             'id' => $id,
@@ -238,6 +249,7 @@ class StandAloneCreditsTest extends \PHPUnit_Framework_TestCase
             'error' => $error,
             'status' => $status,
             'links' => $links,
+            'splitpay' => $splitpay,
         ];
 
         $sac = new StandaloneCredits($sac_array);
@@ -248,5 +260,83 @@ class StandAloneCreditsTest extends \PHPUnit_Framework_TestCase
          * our understanding of the data requirements in StandAloneCredits
          */
         $this->assertThat($sac->toJson(), $this->equalTo(json_encode($sac_array)));
+    }
+
+    public function testConstructEmptySplitPay()
+    {
+        $sac = new StandaloneCredits([
+            'splitpay' => [[]],
+        ]);
+
+        $this->assertThat($sac->toJson(), $this->equalTo('{"splitpay":[{}]}'));
+    }
+
+    public function testSetEmptySplitPay()
+    {
+        $sac = new StandaloneCredits();
+        $sac->splitpay = [[]];
+
+        $this->assertThat($sac->toJson(), $this->equalTo('{"splitpay":[{}]}'));
+    }
+
+    public function testConstructBadSplitPay()
+    {
+        $bad_sp_array = ['linkedAccount' => new \stdClass()];
+
+        $this->expectException(PaysafeException::class);
+        $this->expectExceptionCode(0);
+        $this->expectExceptionMessage('Invalid value for property linkedAccount for class ' . SplitPay::class . '.'
+            . ' String expected.');
+        $sac = new StandaloneCredits([
+            'splitpay' => [$bad_sp_array],
+        ]);
+    }
+
+    public function testConstructSingleSPObjInsteadOfArray()
+    {
+        $this->expectException(PaysafeException::class);
+        $this->expectExceptionCode(0);
+        $this->expectExceptionMessage('Invalid value for property splitpay for class ' . StandaloneCredits::class
+            . '. Array expected.');
+
+        $sac = new StandaloneCredits([
+            'splitpay' => new SplitPay(),
+        ]);
+    }
+
+    public function testConstructGoodSP()
+    {
+        $sac = new StandaloneCredits([
+            'splitpay' => [[
+                'linkedAccount' => 'link_account_id',
+                'amount' => 500,
+            ]]
+        ]);
+
+        $this->assertThat($sac->toJson(),
+            $this->equalTo('{"splitpay":[{"linkedAccount":"link_account_id","amount":500}]}'));
+    }
+
+    public function testSetGoodSP()
+    {
+        $sac = new StandaloneCredits();
+        $sac->splitpay = [[
+            'linkedAccount' => 'link_account_id',
+            'amount' => 500,
+        ]];
+
+        $this->assertThat($sac->toJson(),
+            $this->equalTo('{"splitpay":[{"linkedAccount":"link_account_id","amount":500}]}'));
+    }
+
+    public function testSetSingleSPObjInsteadOfArray()
+    {
+        $this->expectException(PaysafeException::class);
+        $this->expectExceptionCode(0);
+        $this->expectExceptionMessage('Invalid value for property splitpay for class ' . StandaloneCredits::class
+            . '. Array expected.');
+
+        $sac = new StandaloneCredits();
+        $sac->splitpay = new SplitPay();
     }
 }

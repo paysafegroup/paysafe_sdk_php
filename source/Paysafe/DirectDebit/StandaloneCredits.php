@@ -71,7 +71,8 @@ class StandaloneCredits extends \Paysafe\JSONObject implements \Paysafe\Pageable
             'FAILED',
             'CANCELLED'
         ),
-        'links' => 'array:\Paysafe\Link'
+        'links' => 'array:\Paysafe\Link',
+        'splitpay' => 'array:\Paysafe\DirectDebit\SplitPay',
     );
 
     /**
