@@ -17,74 +17,76 @@
  * DAMAGES OR OTHER LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
  * OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
  */
-    namespace Paysafe\DirectDebit;
 
-/*
-     * @property string $id
-     * @property string $merchantRefNum
-     * @property int $amount
-     * @property \Paysafe\DirectDebit\ach $ach
-     * @property \Paysafe\DirectDebit\eft $eft
-     * @property \Paysafe\DirectDebit\bacs $bacs
-     * @property \Paysafe\DirectDebit\profile $profile
-     * @property \Paysafe\DirectDebit\billingDetails $billingDetails
-     * @property \Paysafe\DirectDebit\ShippingDetails $shippingDetails
-     * @property string $customerIp
-     * @property string $dupCheck
-     * @property string $txnTime
-     * @property string $currencyCode
-     * @property \Paysafe\Error $error
-     * @property string $status
+namespace Paysafe\DirectDebit;
+
+use Paysafe\PaysafeException;
+
+/**
+ * @property string $id
+ * @property string $merchantRefNum
+ * @property int $amount
+ * @property \Paysafe\DirectDebit\ACH $ach
+ * @property \Paysafe\DirectDebit\EFT $eft
+ * @property \Paysafe\DirectDebit\BACS $bacs
+ * @property \Paysafe\DirectDebit\Profile $profile
+ * @property \Paysafe\DirectDebit\Filter $filter
+ * @property \Paysafe\DirectDebit\BillingDetails $billingDetails
+ * @property \Paysafe\DirectDebit\ShippingDetails $shippingDetails
+ * @property string $customerIp
+ * @property bool $dupCheck
+ * @property string $txnTime
+ * @property string $currencyCode
+ * @property \Paysafe\Error $error
+ * @property string $status
+ * @property \Paysafe\Link[] $links
+ */
+class StandaloneCredits extends \Paysafe\JSONObject implements \Paysafe\Pageable
+{
+    public static function getPageableArrayKey() {
+        return "standaloneCredits";
+    }
+
+    protected static $fieldTypes = array(
+        'id' => 'string',
+        'merchantRefNum' => 'string',
+        'amount' => 'int',
+        'ach' => '\Paysafe\DirectDebit\ACH',
+        'eft' => '\Paysafe\DirectDebit\EFT',
+        'bacs' => '\Paysafe\DirectDebit\BACS',
+        'profile' => '\Paysafe\DirectDebit\Profile',
+        'filter' => '\Paysafe\DirectDebit\Filter',
+        'billingDetails' => '\Paysafe\DirectDebit\BillingDetails',
+        'shippingDetails' => '\Paysafe\DirectDebit\ShippingDetails',
+        'customerIp' => 'string',
+        'dupCheck' => 'bool',
+        'txnTime' => 'string',
+        'currencyCode' => 'string',
+        'error' => '\Paysafe\Error',
+        'status' => array(
+            'RECEIVED',
+            'PENDING',
+            'PROCESSING',
+            'COMPLETED',
+            'FAILED',
+            'CANCELLED'
+        ),
+        'links' => 'array:\Paysafe\Link'
+    );
+
+    /**
+     * @param string $linkName
+     * @return \Paysafe\Link
+     * @throws \Paysafe\PaysafeException
      */
-
-    class StandaloneCredits extends \Paysafe\JSONObject implements \Paysafe\Pageable {
-
-        public static function getPageableArrayKey() {
-            return "standaloneCredits";
-        }
-
-        protected static $fieldTypes = array(
-            'id' => 'string',
-            'merchantRefNum' => 'string',
-            'amount' => 'int',
-            'ach' => '\Paysafe\DirectDebit\ACH',
-            'eft' => '\Paysafe\DirectDebit\EFT',
-            'bacs' => '\Paysafe\DirectDebit\BACS',
-            'profile' => '\Paysafe\DirectDebit\Profile',
-            'filter' => '\Paysafe\DirectDebit\Filter',
-            'billingDetails' => '\Paysafe\DirectDebit\BillingDetails',
-            'shippingDetails' => '\Paysafe\DirectDebit\ShippingDetails',
-            'customerIp' => 'string',
-            'dupCheck' => 'bool',
-            'txnTime' => 'string',
-            'currencyCode' => 'string',
-            'error' => '\Paysafe\Error',
-            'status' => array(
-                'RECEIVED',
-                'PENDING',
-                'PROCESSING',
-                'COMPLETED',
-                'FAILED',
-                'CANCELLED'
-            ),
-            'links' => 'array:\Paysafe\Link'
-        );
-
-        /**
-         *
-         * @param type $linkName
-         * @return \Paysafe\HostedPayment\Link
-         * @throws PaysafeException
-         */
-        public function getLink( $linkName ) {
-            if (!empty($this->link)) {
-                foreach ($this->link as $link) {
-                    if ($link->rel == $linkName) {
-                        return $link;
-                    }
+    public function getLink( $linkName ) {
+        if (!empty($this->links)) {
+            foreach ($this->links as $link) {
+                if ($link->rel == $linkName) {
+                    return $link;
                 }
             }
-            throw new PaysafeException("Link $linkName not found in purchase.");
         }
-
+        throw new PaysafeException("Link $linkName not found in stand alone credit.");
     }
+}
