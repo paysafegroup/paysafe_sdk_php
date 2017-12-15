@@ -30,7 +30,7 @@ namespace Paysafe\DirectDebit;
  * @property string $country
  * @property string $zip
  */
-class ShippingDetails
+class ShippingDetails extends \Paysafe\JSONObject
 {
 
 //put your code here
