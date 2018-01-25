@@ -192,6 +192,15 @@ class PaysafeApiClient
     }
 
     /**
+     * Merchant account service
+     *
+     * @return merchantAccountService
+     */
+    public function merchantAccountService() {
+        return new MerchantAccountService($this);
+    }
+
+    /**
 	 *
 	 * @param \Paysafe\Request $request
 	 * @return type
