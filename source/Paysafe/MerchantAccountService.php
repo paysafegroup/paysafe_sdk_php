@@ -3,6 +3,9 @@
 namespace Paysafe;
 
 use Paysafe\AccountManagement\MerchantAccount;
+use Paysafe\AccountManagement\RecoveryQuestion;
+use Paysafe\AccountManagement\RecoveryQuestionsList;
+use Paysafe\AccountManagement\User;
 
 class MerchantAccountService
 {
@@ -16,7 +19,7 @@ class MerchantAccountService
      * The uri for the customer vault api.
      * @var string
      */
-    private $uri = "accountmanagement/v1/merchants";
+    private $uri = "accountmanagement/v1";
 
     /**
      * @param \Paysafe\PaysafeApiClient $client
@@ -65,13 +68,52 @@ class MerchantAccountService
 
         $request = new Request(array(
             'method' => Request::POST,
-            'uri' => $this->prepareURI('/' . $merchantAccount->merchantId . "/accounts"),
+            'uri' => $this->prepareURI('/merchants/' . $merchantAccount->merchantId . "/accounts"),
             'body' => $merchantAccount
         ));
-//        die($this->prepareURI('/' . $merchantAccount->merchantId . "/accounts"));
         $response = $this->client->processRequest($request);
-var_dump($response);
         return new MerchantAccount($response);
+    }
+
+    /**
+     * Create New User
+     *
+     * @param User $user
+     * @return User
+     * @throws PaysafeException
+     */
+    public function createNewUser( User $user )
+    {
+        $user->setRequiredFields(array(
+            'userName',
+            'password',
+            'email',
+            'recoveryQuestion',
+        ));
+
+        $request = new Request(array(
+            'method' => Request::POST,
+            'uri' => $this->prepareURI('/accounts/' . $this->client->getAccount() . "/users"),
+            'body' => $user
+        ));
+        $response = $this->client->processRequest($request);
+        return new User($response);
+    }
+
+    /**
+     * Get Recovery Questions
+     *
+     * @return RecoveryQuestionsList
+     * @throws PaysafeException
+     */
+    public function getRecoveryQuestions()
+    {
+        $request = new Request(array(
+            'method' => Request::GET,
+            'uri' => $this->prepareURI('/recoveryquestions')
+        ));
+        $response = $this->client->processRequest($request);
+        return new RecoveryQuestionsList($response);
     }
 
     /**
