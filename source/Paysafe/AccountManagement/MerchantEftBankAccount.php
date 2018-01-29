@@ -11,6 +11,7 @@ namespace Paysafe\AccountManagement;
  * @property string $accountNumber
  * @property string $transitNumber
  * @property string $institutionId
+ * @property string $merchantId
  */
 class MerchantEftBankAccount extends \Paysafe\JSONObject implements \Paysafe\Pageable {
 
@@ -23,6 +24,7 @@ class MerchantEftBankAccount extends \Paysafe\JSONObject implements \Paysafe\Pag
         'id' => 'string',
         'accountNumber' => 'string',
         'transitNumber' => 'string',
-        'institutionId' => 'string'
+        'institutionId' => 'string',
+        'merchantId' => 'string'
     );
 }

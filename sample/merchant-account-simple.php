@@ -33,9 +33,7 @@ if ($_POST) {
              ],
             )));
 
-
-               // var_dump($auth);die;
-		die('Payment successful! ID: ' . $auth->id);
+		die('successful! ID: ' . $auth->id);
 	} catch (Paysafe\PaysafeException $e) {
 		echo '<pre>';
 		var_dump($e->getMessage());

@@ -18,9 +18,8 @@ if ($_POST) {
              )
         )));
         echo'<pre>';
-        var_dump($resultQuestions);
 
-		die('Request successful! ');
+		die('successful! ');
 	} catch (Paysafe\PaysafeException $e) {
 		echo '<pre>';
 		var_dump($e->getMessage());

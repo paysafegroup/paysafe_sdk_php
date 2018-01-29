@@ -25,10 +25,7 @@ if ($_POST) {
             'nationality' => $_POST['nationality'],
             'customerIp' => $_POST['customerIp'],
         )));
-
-
-               // var_dump($auth);die;
-		die('Payment successful! ID: ' . $auth->id);
+		die('successful! ID: ' . $auth->id);
 	} catch (Paysafe\PaysafeException $e) {
 		echo '<pre>';
 		var_dump($e->getMessage());

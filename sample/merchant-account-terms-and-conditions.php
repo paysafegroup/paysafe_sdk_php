@@ -12,7 +12,7 @@ if ($_POST) {
 			 'version' => $_POST['version']
             )));
 
-		die('Payment successful! ID: ' . $result->id);
+		die('successful! ID: ' . $result->id);
 	} catch (Paysafe\PaysafeException $e) {
 		echo '<pre>';
 		var_dump($e->getMessage());

@@ -11,10 +11,11 @@ if ($_POST) {
 		$auth = $client->merchantAccountService()->addMerchantEftBankAccount(new \Paysafe\AccountManagement\MerchantEftBankAccount(array(
 			 'accountNumber' => $_POST['accountNumber'],
 			 'transitNumber' => $_POST['transitNumber'],
-			 'institutionId' => $_POST['institutionId']
+			 'institutionId' => $_POST['institutionId'],
+			 'merchantId' => $_POST['merchantId'],
             )));
                // var_dump($auth);die;
-		die('Payment successful! ID: ' . $auth->id);
+		die('successful! ID: ' . $auth->id);
 	} catch (Paysafe\PaysafeException $e) {
 		echo '<pre>';
 		var_dump($e->getMessage());
@@ -39,6 +40,18 @@ if ($_POST) {
 		<form method="post">
 			<fieldset>
 				<legend>Creation Merchant Banka Account (EFT)</legend>
+				<div>
+					<label>
+                        merchantId:
+						<input type="input" name="merchantId" value="<?php
+						if (isset($_POST['merchantId'])) {
+							echo $_POST['merchantId'];
+						} else {
+                            echo "";
+                        }
+						?>"/>
+					</label>
+                </div>
 				<div>
 					<label>
                         accountNumber:

@@ -8,6 +8,7 @@ use Paysafe\AccountManagement\MerchantAccountBusinessOwner;
 use Paysafe\AccountManagement\MerchantAccountBusinessOwnerAddress;
 use Paysafe\AccountManagement\MerchantAccountBusinessOwnerIdentityDocument;
 use Paysafe\AccountManagement\MerchantEftBankAccount;
+use Paysafe\AccountManagement\MerchantSubAccount;
 use Paysafe\AccountManagement\RecoveryQuestion;
 use Paysafe\AccountManagement\RecoveryQuestionsList;
 use Paysafe\AccountManagement\TermsAndConditions;
@@ -149,6 +150,7 @@ class MerchantAccountService
      *
      * @param MerchantAccountAddress $address
      * @return MerchantAccountAddress
+     * @throws PaysafeException
      */
     public function createMerchantAccountAddress( MerchantAccountAddress $address )
     {
@@ -177,6 +179,7 @@ class MerchantAccountService
      *
      * @param MerchantAccountBusinessOwner $businessOwner
      * @return MerchantAccountBusinessOwner
+     * @throws PaysafeException
      */
     public function createMerchantAccountBusinessOwner( MerchantAccountBusinessOwner $businessOwner )
     {
@@ -208,6 +211,7 @@ class MerchantAccountService
      *
      * @param MerchantAccountBusinessOwnerAddress $businessOwnerAddress
      * @return MerchantAccountBusinessOwnerAddress
+     * @throws PaysafeException
      */
     function createMerchantAccountBusinessOwnerAddress( MerchantAccountBusinessOwnerAddress $businessOwnerAddress )
     {
@@ -238,6 +242,7 @@ class MerchantAccountService
      *
      * @param MerchantAccountBusinessOwnerAddress $businessOwnerAddress
      * @return MerchantAccountBusinessOwnerAddress
+     * @throws PaysafeException
      */
     function createMerchantAccountBusinessOwnerAddressPrevious( MerchantAccountBusinessOwnerAddress $businessOwnerAddress )
     {
@@ -268,6 +273,7 @@ class MerchantAccountService
      *
      * @param MerchantAccountBusinessOwnerIdentityDocument $businessOwnerID
      * @return MerchantAccountBusinessOwnerIdentityDocument
+     * @throws PaysafeException
      */
     function addBusinessOwnerIdentityDocument( MerchantAccountBusinessOwnerIdentityDocument $businessOwnerID )
     {
@@ -295,6 +301,7 @@ class MerchantAccountService
      *
      * @param MerchantEftBankAccount $bankAccount
      * @return MerchantEftBankAccount
+     * @throws PaysafeException
      */
     function addMerchantEftBankAccount( MerchantEftBankAccount $bankAccount )
     {
@@ -305,7 +312,7 @@ class MerchantAccountService
         ));
         $request = new Request(array(
             'method' => Request::POST,
-            'uri' => $this->prepareURI('/accounts/' . $this->client->getAccount() . "/eftbankaccounts"),
+            'uri' => $this->prepareURI('/merchants/' . $bankAccount->merchantId . "/eftbankaccounts"),
             'body' => $bankAccount
         ));
         $response = $this->client->processRequest($request);
@@ -318,6 +325,7 @@ class MerchantAccountService
      *
      * @param TermsAndConditions $termsAndConditions
      * @return TermsAndConditions
+     * @throws PaysafeException
      */
     function acceptTermsAndConditions(TermsAndConditions $termsAndConditions )
     {
@@ -334,6 +342,13 @@ class MerchantAccountService
         return new TermsAndConditions($response);
     }
 
+    /**
+     * Activate Merchant Account
+     *
+     * @param MerchantAccount $merchantAccount
+     * @return TermsAndConditions
+     * @throws PaysafeException
+     */
     function activateMerchantAccount(MerchantAccount $merchantAccount )
     {
         $request = new Request(array(
@@ -344,5 +359,20 @@ class MerchantAccountService
         $response = $this->client->processRequest($request);
 
         return new TermsAndConditions($response);
+    }
+
+    function createMerchantSubAccount(MerchantSubAccount $subAccount )
+    {
+        $subAccount->setRequiredFields(array(
+            'name'
+        ));
+        $request = new Request(array(
+            'method' => Request::POST,
+            'uri' => $this->prepareURI('/accounts/' . $this->client->getAccount() . "/subaccounts"),
+            'body' => $subAccount
+        ));
+        $response = $this->client->processRequest($request);
+
+        return new MerchantSubAccount($response);
     }
 }
