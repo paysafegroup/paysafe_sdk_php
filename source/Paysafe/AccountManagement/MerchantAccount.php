@@ -11,6 +11,12 @@ namespace Paysafe\AccountManagement;
  * @property string $region
  * @property string $legalEntity
  * @property string $productCode
+ * @property string $category
+ * @property string $phone
+ * @property string $yearlyVolumeRange
+ * @property integer $averageTransactionAmount
+ * @property \Paysafe\AccountManagement\MerchantDescriptor $merchantDescriptor
+ * @property \Paysafe\AccountManagement\CaAccountDetails $caAccountDetails
  */
 class MerchantAccount extends \Paysafe\JSONObject implements \Paysafe\Pageable {
 
@@ -25,6 +31,12 @@ class MerchantAccount extends \Paysafe\JSONObject implements \Paysafe\Pageable {
         'currency' => 'string',
         'region' => 'string',
         'legalEntity' => 'string',
-        'productCode' => 'string'
+        'productCode' => 'string',
+        'category' => 'string',
+        'phone' => 'string',
+        'yearlyVolumeRange' => 'string',
+        'averageTransactionAmount' => 'int',
+        'merchantDescriptor' => '\Paysafe\AccountManagement\MerchantDescriptor',
+        'caAccountDetails' => '\Paysafe\AccountManagement\CaAccountDetails',
     );
 }

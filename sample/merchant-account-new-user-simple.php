@@ -54,7 +54,7 @@ if ($_POST) {
 						if (isset($_POST['userName'])) {
 							echo $_POST['userName'];
 						} else {
-                            echo "john_smith";
+                            echo "john_smith_2";
                         }
 						?>"/>
 					</label>
@@ -66,7 +66,7 @@ if ($_POST) {
 						if (isset($_POST['password'])) {
 							echo $_POST['password'];
 						} else {
-                            echo "password123";
+                            echo "Password123";
                         }
 						?>"/>
 					</label>
@@ -78,7 +78,7 @@ if ($_POST) {
 						if (isset($_POST['email'])) {
 							echo $_POST['email'];
 						} else {
-                            echo "johnsmith@email.com";
+                            echo "johnsmith@gmail.com";
                         }
 						?>"/>
 					</label>

@@ -10,7 +10,7 @@ namespace Paysafe\AccountManagement;
  * @property string $password
  * @property string $email
  * @property \Paysafe\AccountManagement\RecoveryQuestion $recoveryQuestion
- * @property \Paysafe\Link $links
+ * @property \Paysafe\Link[] $links
  */
 class User extends \Paysafe\JSONObject implements \Paysafe\Pageable {
 

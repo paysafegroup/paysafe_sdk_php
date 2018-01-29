@@ -6,8 +6,8 @@ namespace Paysafe\AccountManagement;
  * Class RecoveryQuestionsList
  * @package Paysafe\AccountManagement
  *
- * @property \Paysafe\AccountManagement\RecoveryQuestion $question
- * @property \Paysafe\Link $links
+ * @property \Paysafe\AccountManagement\RecoveryQuestion[] $question
+ * @property \Paysafe\Link[] $links
  */
 class RecoveryQuestionsList extends \Paysafe\JSONObject
 {

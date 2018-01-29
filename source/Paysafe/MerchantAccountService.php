@@ -3,8 +3,14 @@
 namespace Paysafe;
 
 use Paysafe\AccountManagement\MerchantAccount;
+use Paysafe\AccountManagement\MerchantAccountAddress;
+use Paysafe\AccountManagement\MerchantAccountBusinessOwner;
+use Paysafe\AccountManagement\MerchantAccountBusinessOwnerAddress;
+use Paysafe\AccountManagement\MerchantAccountBusinessOwnerIdentityDocument;
+use Paysafe\AccountManagement\MerchantEftBankAccount;
 use Paysafe\AccountManagement\RecoveryQuestion;
 use Paysafe\AccountManagement\RecoveryQuestionsList;
+use Paysafe\AccountManagement\TermsAndConditions;
 use Paysafe\AccountManagement\User;
 
 class MerchantAccountService
@@ -43,6 +49,7 @@ class MerchantAccountService
         ));
 
         $response = $this->client->processRequest($request);
+
         return ($response['status'] == 'READY');
     }
 
@@ -60,7 +67,13 @@ class MerchantAccountService
             'currency',
             'region',
             'legalEntity',
-            'productCode'
+            'productCode',
+            'category',
+            'phone',
+            'yearlyVolumeRange',
+            'averageTransactionAmount',
+            'merchantDescriptor',
+            'caAccountDetails'
         ));
         $merchantAccount->setOptionalFields(array(
             'merchantId',
@@ -72,6 +85,7 @@ class MerchantAccountService
             'body' => $merchantAccount
         ));
         $response = $this->client->processRequest($request);
+
         return new MerchantAccount($response);
     }
 
@@ -97,6 +111,7 @@ class MerchantAccountService
             'body' => $user
         ));
         $response = $this->client->processRequest($request);
+
         return new User($response);
     }
 
@@ -113,6 +128,7 @@ class MerchantAccountService
             'uri' => $this->prepareURI('/recoveryquestions')
         ));
         $response = $this->client->processRequest($request);
+
         return new RecoveryQuestionsList($response);
     }
 
@@ -126,5 +142,207 @@ class MerchantAccountService
     private function prepareURI( $path )
     {
         return $this->uri . $path;
+    }
+
+    /**
+     * Create Merchant Account Address
+     *
+     * @param MerchantAccountAddress $address
+     * @return MerchantAccountAddress
+     */
+    public function createMerchantAccountAddress( MerchantAccountAddress $address )
+    {
+        $address->setRequiredFields(array(
+            'street',
+            'city',
+            'state',
+            'country',
+            'zip'
+        ));
+        $address->setOptionalFields(array(
+            'street2'
+        ));
+        $request = new Request(array(
+            'method' => Request::POST,
+            'uri' => $this->prepareURI('/accounts/' . $this->client->getAccount() . "/addresses"),
+            'body' => $address
+        ));
+        $response = $this->client->processRequest($request);
+
+        return new MerchantAccountAddress($response);
+    }
+
+    /**
+     * Create Merchant Account Business Owner
+     *
+     * @param MerchantAccountBusinessOwner $businessOwner
+     * @return MerchantAccountBusinessOwner
+     */
+    public function createMerchantAccountBusinessOwner( MerchantAccountBusinessOwner $businessOwner )
+    {
+        $businessOwner->setRequiredFields(array(
+            'firstName',
+            'lastName',
+            'jobTitle',
+            'phone',
+            'dateOfBirth',
+            'dateOfBirth'
+        ));
+        $businessOwner->setOptionalFields(array(
+            'middleName',
+            'email',
+            'ssn',
+        ));
+        $request = new Request(array(
+            'method' => Request::POST,
+            'uri' => $this->prepareURI('/accounts/' . $this->client->getAccount() . "/businessowners"),
+            'body' => $businessOwner
+        ));
+        $response = $this->client->processRequest($request);
+
+        return new MerchantAccountBusinessOwner($response);
+    }
+
+    /**
+     * Create Merchant Account Business Owner Address
+     *
+     * @param MerchantAccountBusinessOwnerAddress $businessOwnerAddress
+     * @return MerchantAccountBusinessOwnerAddress
+     */
+    function createMerchantAccountBusinessOwnerAddress( MerchantAccountBusinessOwnerAddress $businessOwnerAddress )
+    {
+        $businessOwnerAddress->setRequiredFields(array(
+            'businnessOwnerId',
+            'street',
+            'city',
+            'state',
+            'country',
+            'zip',
+            'yearsAtAddress',
+        ));
+        $businessOwnerAddress->setOptionalFields(array(
+            'street2'
+        ));
+        $request = new Request(array(
+            'method' => Request::POST,
+            'uri' => $this->prepareURI('/businessowners/' . $businessOwnerAddress->businnessOwnerId . "/currentaddresses"),
+            'body' => $businessOwnerAddress
+        ));
+        $response = $this->client->processRequest($request);
+
+        return new MerchantAccountBusinessOwnerAddress($response);
+    }
+
+    /**
+     * Create Merchant Account Business Owner Address Previous
+     *
+     * @param MerchantAccountBusinessOwnerAddress $businessOwnerAddress
+     * @return MerchantAccountBusinessOwnerAddress
+     */
+    function createMerchantAccountBusinessOwnerAddressPrevious( MerchantAccountBusinessOwnerAddress $businessOwnerAddress )
+    {
+        $businessOwnerAddress->setRequiredFields(array(
+            'businnessOwnerId',
+            'street',
+            'city',
+            'state',
+            'country',
+            'zip',
+            'yearsAtAddress',
+        ));
+        $businessOwnerAddress->setOptionalFields(array(
+            'street2'
+        ));
+        $request = new Request(array(
+            'method' => Request::POST,
+            'uri' => $this->prepareURI('/businessowners/' . $businessOwnerAddress->businnessOwnerId . "/previousaddresses"),
+            'body' => $businessOwnerAddress
+        ));
+        $response = $this->client->processRequest($request);
+
+        return new MerchantAccountBusinessOwnerAddress($response);
+    }
+
+    /**
+     * Add a Business Owner Identity Document
+     *
+     * @param MerchantAccountBusinessOwnerIdentityDocument $businessOwnerID
+     * @return MerchantAccountBusinessOwnerIdentityDocument
+     */
+    function addBusinessOwnerIdentityDocument( MerchantAccountBusinessOwnerIdentityDocument $businessOwnerID )
+    {
+        $businessOwnerID->setRequiredFields(array(
+            'businnessOwnerId',
+            'number',
+            'province'
+        ));
+        $businessOwnerID->setOptionalFields(array(
+            'issueDate',
+            'expiryDate'
+        ));
+        $request = new Request(array(
+            'method' => Request::POST,
+            'uri' => $this->prepareURI('/businessowners/' . $businessOwnerID->businnessOwnerId . "/canadiandrivinglicenses"),
+            'body' => $businessOwnerID
+        ));
+        $response = $this->client->processRequest($request);
+
+        return new MerchantAccountBusinessOwnerIdentityDocument($response);
+    }
+
+    /**
+     * Add Merchant Eft Bank Account
+     *
+     * @param MerchantEftBankAccount $bankAccount
+     * @return MerchantEftBankAccount
+     */
+    function addMerchantEftBankAccount( MerchantEftBankAccount $bankAccount )
+    {
+        $bankAccount->setRequiredFields(array(
+            'accountNumber',
+            'transitNumber',
+            'institutionId'
+        ));
+        $request = new Request(array(
+            'method' => Request::POST,
+            'uri' => $this->prepareURI('/accounts/' . $this->client->getAccount() . "/eftbankaccounts"),
+            'body' => $bankAccount
+        ));
+        $response = $this->client->processRequest($request);
+
+        return new MerchantEftBankAccount($response);
+    }
+
+    /**
+     * Accept Our Terms and Conditions
+     *
+     * @param TermsAndConditions $termsAndConditions
+     * @return TermsAndConditions
+     */
+    function acceptTermsAndConditions(TermsAndConditions $termsAndConditions )
+    {
+        $termsAndConditions->setRequiredFields(array(
+            'version'
+        ));
+        $request = new Request(array(
+            'method' => Request::POST,
+            'uri' => $this->prepareURI('/accounts/' . $this->client->getAccount() . "/termsandconditions"),
+            'body' => $termsAndConditions
+        ));
+        $response = $this->client->processRequest($request);
+
+        return new TermsAndConditions($response);
+    }
+
+    function activateMerchantAccount(MerchantAccount $merchantAccount )
+    {
+        $request = new Request(array(
+            'method' => Request::POST,
+            'uri' => $this->prepareURI('/accounts/' . $this->client->getAccount() . "/activation"),
+            'body' => $merchantAccount
+        ));
+        $response = $this->client->processRequest($request);
+
+        return new TermsAndConditions($response);
     }
 }
