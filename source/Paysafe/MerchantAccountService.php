@@ -366,6 +366,9 @@ class MerchantAccountService
         $subAccount->setRequiredFields(array(
             'name'
         ));
+        $subAccount->setOptionalFields(array(
+            'eftId'
+        ));
         $request = new Request(array(
             'method' => Request::POST,
             'uri' => $this->prepareURI('/accounts/' . $this->client->getAccount() . "/subaccounts"),

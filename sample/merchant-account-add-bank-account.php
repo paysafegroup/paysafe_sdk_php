@@ -15,7 +15,9 @@ if ($_POST) {
 			 'merchantId' => $_POST['merchantId'],
             )));
                // var_dump($auth);die;
-		die('successful! ID: ' . $auth->id);
+
+
+        die('successful! ID: ' . $auth->id);
 	} catch (Paysafe\PaysafeException $e) {
 		echo '<pre>';
 		var_dump($e->getMessage());
