@@ -192,6 +192,15 @@ class PaysafeApiClient
     }
 
     /**
+     * Merchant account service
+     *
+     * @return merchantAccountService
+     */
+    public function merchantAccountService() {
+        return new MerchantAccountService($this);
+    }
+
+    /**
 	 *
 	 * @param \Paysafe\Request $request
 	 * @return type
@@ -199,6 +208,7 @@ class PaysafeApiClient
 	 */
     public function processRequest(Request $request)
     {
+        var_dump($request->buildUrl($this->apiEndPoint));
         $curl = curl_init();
         $opts = array(
              CURLOPT_URL => $request->buildUrl($this->apiEndPoint),
@@ -223,6 +233,7 @@ class PaysafeApiClient
         }
         curl_setopt_array($curl, $opts);
         $response = curl_exec($curl);
+        var_dump($response);
         if($response === false) {
             throw $this->getPaysafeException(null, 'cURL has encountered an error in connecting to the host: (' . curl_errno($curl) . ') ' . curl_error($curl) . '. See cURL error codes for explanations: http://curl.haxx.se/libcurl/c/libcurl-errors.html', curl_errno($curl));
         }
