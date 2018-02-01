@@ -1,5 +1,5 @@
 {
-    "name": "paysafegroup/paysafe_sdk_php",
+    "name": "renttrack/paysafe_sdk_php",
     "type": "library",
     "description": "PHP SDK for the Paysafe API",
     "keywords" : ["payment", "payment processing", "netbanx", "optimal", "sdk"],
