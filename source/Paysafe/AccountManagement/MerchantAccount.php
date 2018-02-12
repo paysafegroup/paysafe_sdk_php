@@ -6,6 +6,9 @@ namespace Paysafe\AccountManagement;
  * Class MerchantAccount
  * @package Paysafe\AccountManagement
  *
+ * @property string $id
+ * @property string $status
+ * @property string $merchantId
  * @property string $name
  * @property string $currency
  * @property string $region
@@ -26,6 +29,7 @@ class MerchantAccount extends \Paysafe\JSONObject implements \Paysafe\Pageable {
 
     protected static $fieldTypes = array(
         'id' => 'string',
+        'status' => 'string',
         'merchantId' => 'string',
         'name' => 'string',
         'currency' => 'string',
