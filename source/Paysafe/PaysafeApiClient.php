@@ -117,9 +117,9 @@ class PaysafeApiClient
         $this->environment = $environment;
 
         if ($this->environment == Environment::TEST) {
-            $this->apiEndPoint = "https://api.test.paysafe.com";
+            $this->apiEndPoint = "https://api.test.netbanx.com";
         } else {
-            $this->apiEndPoint = "https://api.paysafe.com";
+            $this->apiEndPoint = "https://api.netbanx.com";
         }
 
         $this->account = $account;
