@@ -417,6 +417,7 @@ class CustomerVaultService
             'merchantRefNum',
             'holderName',
             'billingAddressId',
+            'defaultCardIndicator',
         ));
 
         $request = new Request(array(
