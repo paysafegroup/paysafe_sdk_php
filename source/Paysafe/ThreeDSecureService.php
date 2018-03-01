@@ -28,7 +28,7 @@
 
 namespace Paysafe;
 
-class ThreeDsecureService
+class ThreeDSecureService
 {
 
     /**
