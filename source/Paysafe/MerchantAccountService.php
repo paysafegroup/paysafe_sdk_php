@@ -305,6 +305,30 @@ class MerchantAccountService
      * @return MerchantEftBankAccount
      * @throws PaysafeException
      */
+    function addSubMerchantEftBankAccount(MerchantEftBankAccount $bankAccount)
+    {
+        $bankAccount->setRequiredFields(array(
+            'accountNumber',
+            'transitNumber',
+            'institutionId'
+        ));
+        $request = new Request(array(
+            'method' => Request::POST,
+            'uri' => $this->prepareURI('/accounts/' . $this->client->getAccount() . '/eftbankaccounts'),
+            'body' => $bankAccount
+        ));
+        $response = $this->client->processRequest($request);
+
+        return new MerchantEftBankAccount($response);
+    }
+
+    /**
+     * Add Sub Merchant Eft Bank Account
+     *
+     * @param MerchantEftBankAccount $bankAccount
+     * @return MerchantEftBankAccount
+     * @throws PaysafeException
+     */
     function addMerchantEftBankAccount(MerchantEftBankAccount $bankAccount)
     {
         $bankAccount->setRequiredFields(array(
