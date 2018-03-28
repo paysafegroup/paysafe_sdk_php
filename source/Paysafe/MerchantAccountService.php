@@ -338,7 +338,7 @@ class MerchantAccountService
         ));
         $request = new Request(array(
             'method' => Request::POST,
-            'uri' => $this->prepareURI('/accounts/' . $this->client->getAccount() . '/eftbankaccounts'),
+            'uri' => $this->prepareURI('/merchants/' . $bankAccount->merchantId . '/eftbankaccounts'),
             'body' => $bankAccount
         ));
         $response = $this->client->processRequest($request);
