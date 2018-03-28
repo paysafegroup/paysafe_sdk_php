@@ -7,13 +7,15 @@ use Paysafe\CardPayments\Authorization;
 
 if ($_POST) {
 	$client = new PaysafeApiClient($paysafeApiKeyId, $paysafeApiKeySecret, Environment::TEST, $paysafeAccountNumber);
-	$client->setAccount($_POST['accountId']);
 	try {
-		$auth = $client->merchantAccountService()->addSubMerchantEftBankAccount(new \Paysafe\AccountManagement\MerchantEftBankAccount(array(
+		$auth = $client->merchantAccountService()->addMerchantEftBankAccount(new \Paysafe\AccountManagement\MerchantEftBankAccount(array(
 			 'accountNumber' => $_POST['accountNumber'],
 			 'transitNumber' => $_POST['transitNumber'],
 			 'institutionId' => $_POST['institutionId'],
+			 'merchantId' => $_POST['merchantId'],
             )));
+               // var_dump($auth);die;
+
 
         die('successful! ID: ' . $auth->id);
 	} catch (Paysafe\PaysafeException $e) {
@@ -42,10 +44,10 @@ if ($_POST) {
 				<legend>Creation Merchant Banka Account (EFT)</legend>
 				<div>
 					<label>
-                        accountId:
-						<input type="input" name="accountId" value="<?php
-						if (isset($_POST['accountId'])) {
-							echo $_POST['accountId'];
+                        merchantId:
+						<input type="input" name="merchantId" value="<?php
+						if (isset($_POST['merchantId'])) {
+							echo $_POST['merchantId'];
 						} else {
                             echo "";
                         }

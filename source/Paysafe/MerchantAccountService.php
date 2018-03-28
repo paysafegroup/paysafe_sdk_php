@@ -305,6 +305,30 @@ class MerchantAccountService
      * @return MerchantEftBankAccount
      * @throws PaysafeException
      */
+    function addSubMerchantEftBankAccount(MerchantEftBankAccount $bankAccount)
+    {
+        $bankAccount->setRequiredFields(array(
+            'accountNumber',
+            'transitNumber',
+            'institutionId'
+        ));
+        $request = new Request(array(
+            'method' => Request::POST,
+            'uri' => $this->prepareURI('/accounts/' . $this->client->getAccount() . '/eftbankaccounts'),
+            'body' => $bankAccount
+        ));
+        $response = $this->client->processRequest($request);
+
+        return new MerchantEftBankAccount($response);
+    }
+
+    /**
+     * Add Sub Merchant Eft Bank Account
+     *
+     * @param MerchantEftBankAccount $bankAccount
+     * @return MerchantEftBankAccount
+     * @throws PaysafeException
+     */
     function addMerchantEftBankAccount(MerchantEftBankAccount $bankAccount)
     {
         $bankAccount->setRequiredFields(array(
@@ -314,7 +338,7 @@ class MerchantAccountService
         ));
         $request = new Request(array(
             'method' => Request::POST,
-            'uri' => $this->prepareURI('/merchants/' . $bankAccount->merchantId . '/eftbankaccounts'),
+            'uri' => $this->prepareURI('/accounts/' . $this->client->getAccount() . '/eftbankaccounts'),
             'body' => $bankAccount
         ));
         $response = $this->client->processRequest($request);
@@ -348,7 +372,7 @@ class MerchantAccountService
      * Activate Merchant Account
      *
      * @param MerchantAccount $merchantAccount
-     * @return TermsAndConditions
+     * @return MerchantAccount
      * @throws PaysafeException
      */
     function activateMerchantAccount(MerchantAccount $merchantAccount)
@@ -360,7 +384,7 @@ class MerchantAccountService
         ));
         $response = $this->client->processRequest($request);
 
-        return new TermsAndConditions($response);
+        return new MerchantAccount($response);
     }
 
     /**
