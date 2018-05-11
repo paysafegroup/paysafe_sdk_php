@@ -2,6 +2,7 @@
 
 namespace Paysafe;
 
+use Paysafe\AccountManagement\Merchant;
 use Paysafe\AccountManagement\MerchantAccount;
 use Paysafe\AccountManagement\MerchantAccountAddress;
 use Paysafe\AccountManagement\MerchantAccountBusinessOwner;
@@ -410,5 +411,26 @@ class MerchantAccountService
         $response = $this->client->processRequest($request);
 
         return new MerchantSubAccount($response);
+    }
+
+    /**
+     * Add merchant account
+     * @param Merchant $merchant
+     * @return Merchant
+     * @throws PaysafeException
+     */
+    function addMerchant(Merchant $merchant)
+    {
+        $merchant->setRequiredFields(array(
+            'name'
+        ));
+        $request = new Request(array(
+            'method' => Request::POST,
+            'uri' => $this->prepareURI('/merchants'),
+            'body' => $merchant
+        ));
+        $response = $this->client->processRequest($request);
+
+        return new Merchant($response);
     }
 }
