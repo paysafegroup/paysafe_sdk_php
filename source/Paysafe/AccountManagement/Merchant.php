@@ -12,8 +12,9 @@ namespace Paysafe\AccountManagement;
  */
 class Merchant extends \Paysafe\JSONObject implements \Paysafe\Pageable {
 
-    public static function getPageableArrayKey() {
-        return "merchant";
+    public static function getPageableArrayKey()
+    {
+        return 'merchant';
     }
 
     protected static $fieldTypes = array(
