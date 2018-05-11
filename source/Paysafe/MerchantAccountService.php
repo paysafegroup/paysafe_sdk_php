@@ -414,12 +414,12 @@ class MerchantAccountService
     }
 
     /**
-     * Add merchant account
+     * Create merchant
      * @param Merchant $merchant
      * @return Merchant
      * @throws PaysafeException
      */
-    function addMerchant(Merchant $merchant)
+    function createMerchant(Merchant $merchant)
     {
         $merchant->setRequiredFields(array(
             'name'
