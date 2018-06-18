@@ -53,6 +53,7 @@ namespace Paysafe\CardPayments;
  * @property \Paysafe\Error $error
  * @property \Paysafe\Link[] $links
  * @property \Paysafe\CardPayments\SplitPay[] $splitpay
+ * @property \Paysafe\CardPayments\StoredCredential $storedCredential
  */
 class Authorization extends \Paysafe\JSONObject implements \Paysafe\Pageable
 {
@@ -114,7 +115,8 @@ class Authorization extends \Paysafe\JSONObject implements \Paysafe\Pageable
          'settlements' => 'array:\Paysafe\CardPayments\Settlement',
          'error' => '\Paysafe\Error',
          'links' => 'array:\Paysafe\Link',
-         'splitpay' => 'array:\Paysafe\CardPayments\SplitPay',
+        'splitpay' => 'array:\Paysafe\CardPayments\SplitPay',
+        'storedCredential' => '\Paysafe\CardPayments\StoredCredential'
     );
 
 }
