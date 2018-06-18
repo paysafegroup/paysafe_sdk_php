@@ -88,6 +88,7 @@ class CardPaymentService
              'accordD',
              'description',
              'splitpay',
+	     'storedCredential'
         ));
 
         $request = new Request(array(
