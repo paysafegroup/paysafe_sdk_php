@@ -382,6 +382,10 @@ class AuthorizationTest extends \PHPUnit_Framework_TestCase
                 'linkedAccount' => 'link_account_id',
                 'amount' => 500,
             ]],
+            'storedCredential' => [
+                'type' => 'RECURRING',
+                'occurrence' => 'SUBSEQUENT'
+            ]
         ];
         $auth = new Authorization($auth_array);
 
