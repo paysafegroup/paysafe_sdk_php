@@ -176,7 +176,7 @@ class PaysafeApiClient
     /**
      * Threed Secure  service.
      *
-     * @return \Paysafe\ThreedSecureService
+     * @return \Paysafe\ThreeDSecureService
      */
     public function threeDSecureService() {
         return new ThreeDSecureService($this);
