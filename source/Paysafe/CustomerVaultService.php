@@ -239,6 +239,7 @@ class CustomerVaultService
             'zip',
             'recipientName',
             'phone',
+            'defaultShippingAddressIndicator',
         ));
 
         $request = new Request(array(
@@ -275,6 +276,7 @@ class CustomerVaultService
             'zip',
             'recipientName',
             'phone',
+            'defaultShippingAddressIndicator',
         ));
 
         $request = new Request(array(
