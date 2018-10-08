@@ -8,6 +8,7 @@ use Paysafe\AccountManagement\MerchantAccountAddress;
 use Paysafe\AccountManagement\MerchantAccountBusinessOwner;
 use Paysafe\AccountManagement\MerchantAccountBusinessOwnerAddress;
 use Paysafe\AccountManagement\MerchantAccountBusinessOwnerIdentityDocument;
+use Paysafe\AccountManagement\MerchantAchBankAccount;
 use Paysafe\AccountManagement\MerchantEftBankAccount;
 use Paysafe\AccountManagement\MerchantSubAccount;
 use Paysafe\AccountManagement\RecoveryQuestion;
@@ -76,11 +77,12 @@ class MerchantAccountService
             'phone',
             'yearlyVolumeRange',
             'averageTransactionAmount',
-            'merchantDescriptor',
-            'caAccountDetails'
+            'merchantDescriptor'
         ));
         $merchantAccount->setOptionalFields(array(
             'merchantId',
+            'caAccountDetails',
+            'usAccountDetails',
         ));
 
         $request = new Request(array(
@@ -324,6 +326,29 @@ class MerchantAccountService
     }
 
     /**
+     * Add Merchant Ach Bank Account
+     *
+     * @param MerchantEftBankAccount $bankAccount
+     * @return MerchantEftBankAccount
+     * @throws PaysafeException
+     */
+    function addSubMerchantAchBankAccount(MerchantAchBankAccount $bankAccount)
+    {
+        $bankAccount->setRequiredFields(array(
+            'accountNumber',
+            'routingNumber'
+        ));
+        $request = new Request(array(
+            'method' => Request::POST,
+            'uri' => $this->prepareURI('/merchants/' . $bankAccount->merchantId . '/achbankaccounts'),
+            'body' => $bankAccount
+        ));
+        $response = $this->client->processRequest($request);
+
+        return new MerchantAchBankAccount($response);
+    }
+
+    /**
      * Add Sub Merchant Eft Bank Account
      *
      * @param MerchantEftBankAccount $bankAccount
@@ -401,7 +426,8 @@ class MerchantAccountService
             'name'
         ));
         $subAccount->setOptionalFields(array(
-            'eftId'
+            'eftId',
+            'achId'
         ));
         $request = new Request(array(
             'method' => Request::POST,
