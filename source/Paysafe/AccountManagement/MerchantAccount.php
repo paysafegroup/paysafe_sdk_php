@@ -20,6 +20,7 @@ namespace Paysafe\AccountManagement;
  * @property integer $averageTransactionAmount
  * @property \Paysafe\AccountManagement\MerchantDescriptor $merchantDescriptor
  * @property \Paysafe\AccountManagement\CaAccountDetails $caAccountDetails
+ * @property \Paysafe\AccountManagement\UsAccountDetails $usAccountDetails
  */
 class MerchantAccount extends \Paysafe\JSONObject implements \Paysafe\Pageable {
 
@@ -42,5 +43,6 @@ class MerchantAccount extends \Paysafe\JSONObject implements \Paysafe\Pageable {
         'averageTransactionAmount' => 'int',
         'merchantDescriptor' => '\Paysafe\AccountManagement\MerchantDescriptor',
         'caAccountDetails' => '\Paysafe\AccountManagement\CaAccountDetails',
+        'usAccountDetails' => '\Paysafe\AccountManagement\UsAccountDetails',
     );
 }
