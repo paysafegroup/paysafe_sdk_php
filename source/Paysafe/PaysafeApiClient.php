@@ -204,7 +204,8 @@ class PaysafeApiClient
              CURLOPT_URL => $request->buildUrl($this->apiEndPoint),
              CURLOPT_HTTPHEADER => array(
                   'Authorization: Basic ' . base64_encode($this->keyID . ':' . $this->keyPassword),
-                  'Content-Type: application/json; charset=utf-8'
+                  'Content-Type: application/json; charset=utf-8',
+		  'SDK-Type: Paysafe_PHP_SDK'
              ),
              CURLOPT_RETURNTRANSFER => true,
              CURLOPT_SSL_VERIFYPEER => false,
