@@ -121,8 +121,10 @@ class AuthorizationTest extends \PHPUnit_Framework_TestCase
             'cavv' => 'cavv', // string
             'xid' => 'xid', // string
             'threeDEnrollment' => 'threeDEnrollment', // string
-            'threeDResult' => 'threeDResult', // string
+            'threeDResult' => 'Y', //enum 
             'signatureStatus' => 'string', // string
+            'threeDSecureVersion'=>'string', //string
+            'directoryServerTransactionId'=>'string', //string
         ];
         $authCode = 'authCode'; // string
         // $profile should be an array acceptable to the Paysafe\CardPayments\Profile constructor

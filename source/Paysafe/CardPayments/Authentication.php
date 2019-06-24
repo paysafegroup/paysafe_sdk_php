@@ -27,6 +27,9 @@ namespace Paysafe\CardPayments;
  * @property string $threeDEnrollment
  * @property string $threeDResult
  * @property string $signatureStatus
+ * @property string $threeDSecureVersion
+ * @property string $directoryServerTransactionId
+ * 
  */
 class Authentication extends \Paysafe\JSONObject
 {
@@ -35,8 +38,17 @@ class Authentication extends \Paysafe\JSONObject
          'cavv' => 'string',
          'xid' => 'string',
          'threeDEnrollment' => 'string',
-         'threeDResult' => 'string',
+         'threeDResult' => array(
+            'Y',
+            'A',
+            'N',
+            'U',
+            'E',
+            'R'
+        ),
          'signatureStatus' => 'string',
+         'threeDSecureVersion'=>'string',
+         'directoryServerTransactionId'=>'string'
     );
 
 }
