@@ -303,7 +303,8 @@ class CardPaymentService
              'customerIp',
              'dupCheck',
              'description',
-             'billingDetails'
+             'billingDetails',
+	     'storedCredential',
         ));
 
         $request = new Request(array(
