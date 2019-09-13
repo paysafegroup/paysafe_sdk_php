@@ -18,36 +18,36 @@ class ShippingDetails extends \Paysafe\JSONObject
 {
 
     protected static $fieldTypes = array(
-     'carrier' => array(
-        'APC', 
-        'APS', 
-        'CAD', 
-        'DHL', 
-        'FEX',
-        'RML', 
-        'UPS', 
-        'USPS', 
-        'CLK', 
-        'EMS', 
-        'NEX', 
-        'OTHER'
-     ),
-    
-     'shipMethod' => array(
+   
+      'carrier' => array(
+         'APC',
+         'APS',
+         'CAD',
+         'DHL',
+         'FEX',
+         'RML',
+         'UPS',
+         'USPS',
+         'CLK',
+         'EMS',
+         'NEX',
+         'OTHER'
+      ),
+      'shipMethod' => array(
         'N', 
         'T', 
         'C',
         'O',
         'S' 
-     ),
-     'recipientName' => 'string',
-     'company' => 'string',
-     'street' => 'string',
-     'street2' => 'string',
-     'city' => 'string'
-     'state' => 'string',
-     'country' => 'string',
-     'zip' => 'string'
-    );
+      ),
+      'recipientName' => 'string',
+      'company' => 'string',
+      'street' => 'string',
+      'street2' => 'string',
+      'city' => 'string',
+      'state' => 'string',
+      'country' => 'string',
+      'zip' => 'string'
+      );
     
 }

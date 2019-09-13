@@ -5,7 +5,7 @@ namespace Paysafe\ThreeDSecureV2;
 /**
  * @property string $data
  * @property string $method
- * @property bool $time
+ * @property string $time
  * @property string $id
  */
 class priorThreeDSAuthentication extends \Paysafe\JSONObject
@@ -19,7 +19,7 @@ class priorThreeDSAuthentication extends \Paysafe\JSONObject
         'AVS_VERIFIED',
         'OTHER_ISSUER_METHOD'
     ),
-    'time' => 'dateTime',
+    'time' => 'string',
     'id' => 'string'
     );
 }

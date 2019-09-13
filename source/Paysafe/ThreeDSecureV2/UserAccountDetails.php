@@ -14,10 +14,10 @@ namespace Paysafe\ThreeDSecureV2;
  * @property int $transactionCountForPreviousDay
  * @property int $transactionCountForPreviousYear
  * @property bool $suspiciousAccountActivity
- * @property string $
- * @property string $
- * @property string $
- * @property string $
+ * @property Paysafe\ThreeDSecureV2\ShippingDetailsUsage $shippingDetailsUsage
+ * @property Paysafe\ThreeDSecureV2\PaymentAccountDetails $paymentAccountDetails
+ * @property string Paysafe\ThreeDSecureV2\UserLogin $userLogin
+ * @property string 
 
  */
 class UserAccountDetails extends \Paysafe\JSONObject

@@ -7,7 +7,7 @@ namespace Paysafe\ThreeDSecureV2;
  * @property string $authenticationMethod
  * @property string $time
  */
-class PaymentAccountDetails extends \Paysafe\JSONObject
+class UserLogin extends \Paysafe\JSONObject
 {
     
     protected static $fieldTypes = array(
@@ -17,10 +17,10 @@ class PaymentAccountDetails extends \Paysafe\JSONObject
         'INTERNAL_CREDENTIALS',
         'FEDERATED_ID',
         'ISSUER_CREDENTIALS',
-        'THIRD_PARY_AUTHENTICATION',
+        'THIRD_PARTY_AUTHENTICATION',
         'FIDO_AUTHENTICATOR'
     ),
-    'time' => 'dateTime'   
+    'time' => 'string'   
     );
 
 }

@@ -24,12 +24,10 @@ namespace Paysafe\ThreeDSecureV2;
 /**
  * @property string $paymentToken
  * @property string $cardNum
- * @property string $type
+ * @property string $cardBin
  * @property string $lastDigits
  * @property \Paysafe\ThreeDSecureV2\CardExpiry $cardExpiry
- * @property string $cvv
- * @property string $track1
- * @property string $track2
+ * @property string $type
  * @property string $holderName
  */
 class Card extends \Paysafe\JSONObject
@@ -38,24 +36,14 @@ class Card extends \Paysafe\JSONObject
     protected static $fieldTypes = array(
         'paymentToken' => 'string',
         'cardNum' => 'string',
-        'cardType' => array(
-            'AM',
-            'DC',
-            'DI',
-            'JC',
-            'MC',
-            'MD',
-            'SF',
-            'SO',
-            'VI',
-            'VD',
-            'VE'
-        ),
+        'cardBin' => 'string',
         'lastDigits' => 'string',
         'cardExpiry' => '\Paysafe\ThreeDSecureV2\CardExpiry',
-        'cvv' => 'string',
-        'track1' => 'string',
-        'track2' => 'string',
+        'type' => array(
+            'AM',
+            'MC',
+            'VI'
+        ),
         'holderName' => 'string'
     );
 

@@ -181,6 +181,15 @@ class PaysafeApiClient
     public function threeDSecureService() {
         return new ThreeDSecureService($this);
     }
+  /**
+     * Threed Secure V2 service.
+     *
+     * @return \Paysafe\ThreeDSecureServicev2
+     */
+    public function threeDSecureV2Service() {
+        return new ThreeDSecureV2Service($this);
+    }
+
 
     /**
      * Account Management  service.
@@ -198,7 +207,7 @@ class PaysafeApiClient
 	 * @throws \Paysafe\PaysafeException
 	 */
     public function processRequest(Request $request)
-    {
+       {
         $curl = curl_init();
         $opts = array(
              CURLOPT_URL => $request->buildUrl($this->apiEndPoint),
@@ -229,14 +238,12 @@ class PaysafeApiClient
         }
         $responseCode = curl_getinfo($curl, CURLINFO_HTTP_CODE);
         curl_close($curl);
-
         if (!($return = json_decode($response, true))) {
             if ($responseCode < 200 || $responseCode >= 206) {
                 throw $this->getPaysafeException($responseCode);
             }
             return true;
         }
-
         if (is_array($return)) {
             if ($responseCode < 200 || $responseCode >= 206) {
                 $error = $this->getPaysafeException($responseCode, $return['error']['message'], $return['error']['code']);
@@ -259,7 +266,6 @@ class PaysafeApiClient
             throw $this->getPaysafeException($responseCode, $return);
         }
     }
-
     /**
 	 * Return the correct exception type based on http code
 	 *
@@ -276,7 +282,6 @@ class PaysafeApiClient
         if(!$code) {
             $code = $httpCode;
         }
-
         $exceptionType = '\Paysafe\PaysafeException';
         switch($httpCode) {
             case '400':
@@ -306,10 +311,7 @@ class PaysafeApiClient
                     $exceptionType = '\Paysafe\APIException';
                 }
                 break;
-
         }
-
         return new $exceptionType($message,$code);
     }
-
 }
