@@ -8,6 +8,5 @@
 // Since the API accepts only integer values, the currencyBaseUnitMultiplier is used convert the decimal amount into the accepted base units integer value.
     $currencyCode = 'your-account-currency-code'; // for example: CAD
     $currencyBaseUnitsMultiplier = 'currency-base-units-multiplier'; // for example: 100
-
-    require_once('../source/paysafe.php');
+     require_once('../source/paysafe.php');
     
