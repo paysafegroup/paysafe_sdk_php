@@ -39,6 +39,9 @@ namespace Paysafe\ThreeDSecureV2;
  * @property \Paysafe\ThreeDSecureV2\\Profile $profile
  * @property \Paysafe\ThreeDSecureV2\Billingcycle $billingCycle
  * @property string $signatureStatus 
+ * @property string $threeDSecureServerTransactionId
+ * @property string $mcc
+ * @property string $merchantName
  */
 
 class Authentications extends \Paysafe\JSONObject
@@ -59,7 +62,7 @@ class Authentications extends \Paysafe\JSONObject
             'PENDING',
             'FAILED'
         ),
-        'acsURL' => 'string',
+        'acsUrl' => 'string',
         'payload' => 'string',
         'threeDEnrollment' => array(
             'Y', 
@@ -111,7 +114,7 @@ class Authentications extends \Paysafe\JSONObject
             'PAYMENT',
             'NON_PAYMENT'
         ),
-        'initialPurchaseTime' => "string",
+        'initialPurchaseTime' => 'string',
         'orderItemDetails' => '\Paysafe\ThreeDSecureV2\OrderItemDetails',
         'purchasedGiftCardDetails' => '\Paysafe\ThreeDSecureV2\PurchasedGiftCardDetails',
         'browserDetails' => '\Paysafe\ThreeDSecureV2\BrowserDetails',
@@ -122,7 +125,12 @@ class Authentications extends \Paysafe\JSONObject
         'billingCycle' => '\Paysafe\ThreeDSecureV2\BillingCycle',
         'signatureStatus' => array(
             'Y', 
-            'N')
+            'N'
+        ),
+        'threeDSecureServerTransactionId' => 'string',
+        'mcc' => 'string',
+        'merchantName' => 'string'
     );
+
 
 }

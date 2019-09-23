@@ -26,8 +26,10 @@ class AuthenticationTest extends PHPUnit_Framework_TestCase {
     public function testProcessAuthentication() {
         
 		$response = $this->getClient()->threeDSecureV2Service()->authentications(new Authentications(array(
-			 'amount' => 123,
+			       'amount' => 123,
              'currency' => "EUR",
+             'mcc' => "0742",
+             'merchantName' => "Merchant Name Inc",
              'merchantRefNum' => uniqid($this->generateRandomString()),
              'merchantUrl'=> "https://mysite.com",
              'card' => array(
@@ -45,7 +47,8 @@ class AuthenticationTest extends PHPUnit_Framework_TestCase {
                  'state' => 'AL',
                  'street' => "My street 1",
                  'street2' => "My street 2",
-				  'zip' => "M5H 2N2"
+                'zip' => "M5H 2N2",
+                'useAsShippingAddress' => 'false'
              ),
              'shippingDetails'=> array(
                 'city' =>  "New York",
@@ -152,6 +155,8 @@ class AuthenticationTest extends PHPUnit_Framework_TestCase {
 		$response = $this->getClient()->threeDSecureV2Service()->authentications(new Authentications(array(
 			 'amount' => 123,
              'currency' => "EUR",
+             'mcc' => "0742",
+             'merchantName' => "Merchant Name Inc",
              'merchantRefNum' => uniqid($this->generateRandomString()),
              'merchantUrl'=> "https://mysite.com",
              'card' => array(
@@ -164,7 +169,8 @@ class AuthenticationTest extends PHPUnit_Framework_TestCase {
                  'state' => 'AL',
                  'street' => "My street 1",
                  'street2' => "My street 2",
-				  'zip' => "M5H 2N2"
+                  'zip' => "M5H 2N2",
+                  'useAsShippingAddress' => 'false'
              ),
              'shippingDetails'=> array(
                 'city' =>  "New York",
@@ -332,7 +338,7 @@ class AuthenticationTest extends PHPUnit_Framework_TestCase {
 $opts = array(
 CURLOPT_URL => "https://api.test.netbanx.com/customervault/v1/singleusetokens",
 CURLOPT_HTTPHEADER => array(
-     'Authorization: Basic ' . base64_encode('OT-219950:B-qa2-0-5b3e2015-0-302c02143f7472afe44e3479fd3509e928efcd3d30326b540214020eb428b8838b174c54891b2cba077db76d1919'),
+     'Authorization: Basic ' . base64_encode('PAYSAFE_API_KEY : PAYSAFE_API_SECRET'),
      'Content-Type: application/json; charset=utf-8'
 ),
 CURLOPT_RETURNTRANSFER => true,
@@ -354,8 +360,7 @@ curl_setopt_array($curl, $opts);
 $response = curl_exec($curl);
 $response=  json_decode($response);    
 return ($response->paymentToken);      
-}
-
+  }
 }
 $authenticationTest = new AuthenticationTest; 
 	

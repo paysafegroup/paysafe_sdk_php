@@ -76,7 +76,9 @@ class ThreeDSecureV2Service
              'maxAuthorizationsForInstalmentPayment',
              'transactionIntent',
              'billingCycle',
-             'initialPurchaseTime'
+             'initialPurchaseTime',
+             'mcc',
+             'merchantName'
         ));
 
         $request = new Request(array(

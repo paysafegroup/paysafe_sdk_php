@@ -9,17 +9,17 @@ namespace Paysafe\ThreeDSecureV2;
  * @property string $state
  * @property string $country
  * @property string $zip
+ * @property bool $useAsShippingAddress
  */
 class BillingDetails extends \Paysafe\JSONObject
 {
-
     protected static $fieldTypes = array(
 
      'street' => 'string',
      'street2' => 'string',
      'city' => 'string',
      'state' => 'string',
-     'country' => => array(
+     'country' => array(
         'AF', 'AX', 'AL', 'DZ', 'AS',
         'AD', 'AO', 'AI', 'AQ', 'AG',
         'AR', 'AM', 'AW', 'AU', 'AT',
@@ -71,7 +71,7 @@ class BillingDetails extends \Paysafe\JSONObject
         'VE', 'VN', 'VG', 'VI', 'WF',
         'EH', 'YE', 'ZM', 'ZW'   
      ),
-     'zip' => 'string'
+     'zip' => 'string',
+     'useAsShippingAddress' => 'bool'
     );
-
 }
