@@ -19,20 +19,6 @@ class ShippingDetails extends \Paysafe\JSONObject
 
     protected static $fieldTypes = array(
    
-      'carrier' => array(
-         'APC',
-         'APS',
-         'CAD',
-         'DHL',
-         'FEX',
-         'RML',
-         'UPS',
-         'USPS',
-         'CLK',
-         'EMS',
-         'NEX',
-         'OTHER'
-      ),
       'shipMethod' => array(
         'N', 
         'T', 
@@ -40,8 +26,6 @@ class ShippingDetails extends \Paysafe\JSONObject
         'O',
         'S' 
       ),
-      'recipientName' => 'string',
-      'company' => 'string',
       'street' => 'string',
       'street2' => 'string',
       'city' => 'string',
