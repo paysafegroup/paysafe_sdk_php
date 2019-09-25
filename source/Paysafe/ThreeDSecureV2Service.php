@@ -13,7 +13,7 @@ class ThreeDSecureV2Service
 	 * The uri for the threed secure v2 api.
 	 * @var string
 	 */
-    private $uri = "threedsecure/v2";
+    private $uri = "threedsecure/v2/accounts/";
 
     /**
 	 * Initialize the threedsecurev2 payment service.
@@ -62,7 +62,7 @@ class ThreeDSecureV2Service
              'authenticationPurpose',
              'deviceChannel',
              'messageCategory'
-
+            
         ));
         $authentications->setOptionalFields(array(
              'orderItemDetails',
@@ -78,7 +78,9 @@ class ThreeDSecureV2Service
              'billingCycle',
              'initialPurchaseTime',
              'mcc',
-             'merchantName'
+             'merchantName',
+             'electronicDelivery' 
+
         ));
 
         $request = new Request(array(
@@ -117,9 +119,8 @@ class ThreeDSecureV2Service
         {
             throw new PaysafeException('Missing or invalid account', 500);
         }
-        return $this->uri . '/accounts/' . $this->client->getAccount() . $path;
+        return $this->uri. $this->client->getAccount(). $path;
     }
-
 }
 
 ?>

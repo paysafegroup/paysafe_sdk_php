@@ -11,7 +11,7 @@ if ($_POST) {
 
 		$auth = $client->threeDSecureV2Service()->authentications(new Authentications(array(
              'merchantRefNum' => $_POST['merchant_ref_num'],
-             'amount' => $_POST['amount'] * $currencyBaseUnitsMultiplier,
+             'amount' => $_POST['amount'],
              'currency' => $_POST['currency'],
             'deviceFingerprintingId' => $_POST['deviceFingerprinting_Id'],
 			 'card' => array(
