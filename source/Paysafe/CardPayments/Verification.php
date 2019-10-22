@@ -28,6 +28,7 @@ namespace Paysafe\CardPayments;
  * @property string $authCode
  * @property \Paysafe\CardPayments\Profile $profile
  * @property \Paysafe\CardPayments\BillingDetails $billingDetails
+ * @property \Paysafe\CardPayments\StoredCredential $storedCredential
  * @property string $customerIp
  * @property string $dupCheck
  * @property \Paysafe\CardPayments\MerchantDescriptor $merchantDescriptor
@@ -57,6 +58,7 @@ class Verification extends \Paysafe\JSONObject implements \Paysafe\Pageable
          'authCode' => 'string',
          'profile' => '\Paysafe\CardPayments\Profile',
          'billingDetails' => '\Paysafe\CardPayments\BillingDetails',
+         'storedCredential' => '\Paysafe\CardPayments\StoredCredential',
          'customerIp' => 'string',
          'dupCheck' => 'bool',
          'merchantDescriptor' => '\Paysafe\CardPayments\MerchantDescriptor',
