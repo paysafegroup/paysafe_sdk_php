@@ -44,7 +44,7 @@ namespace Paysafe\CardPayments;
  * @property string $txnTime
  * @property string $currencyCode
  * @property string $avsResponse
- * @property string $cvvVerication
+ * @property string $cvvVerification
  * @property string $status
  * @property int[] $riskReasonCode
  * @property \Paysafe\CardPayments\AcquirerResponse $acquirerRresponse
