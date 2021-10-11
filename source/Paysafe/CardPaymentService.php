@@ -85,6 +85,7 @@ class CardPaymentService
              'shippingDetails',
              'recurring',
              'merchantDescriptor',
+             'keywords',
              'accordD',
              'description',
              'splitpay',
