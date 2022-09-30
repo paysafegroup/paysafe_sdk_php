@@ -87,6 +87,7 @@ class CardPaymentService
              'merchantDescriptor',
              'keywords',
              'accordD',
+             'airlineTravelDetails',
              'description',
              'splitpay',
 	     'storedCredential'

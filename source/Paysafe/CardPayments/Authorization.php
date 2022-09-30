@@ -39,6 +39,7 @@ namespace Paysafe\CardPayments;
  * @property string[] $keywords
  * @property \Paysafe\CardPayments\MerchantDescriptor $merchantDescriptor
  * @property \Paysafe\CardPayments\AccordD $accordD
+ * @property \Paysafe\CardPayments\AirlineTravelDetails $airlineTravelDetails
  * @property string $description
  * @property \Paysafe\CardPayments\MasterPass
  * @property string $txnTime
@@ -84,6 +85,7 @@ class Authorization extends \Paysafe\JSONObject implements \Paysafe\Pageable
          'keywords' => 'array:string',
          'merchantDescriptor' => '\Paysafe\CardPayments\MerchantDescriptor',
          'accordD' => '\Paysafe\CardPayments\AccordD',
+         'airlineTravelDetails' => '\Paysafe\CardPayments\AirlineTravelDetails',
          'description' => 'string',
          'masterPass' => '\Paysafe\CardPayments\MasterPass',
          'txnTime' => 'string',
