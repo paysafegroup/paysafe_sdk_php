@@ -10,6 +10,8 @@ namespace Paysafe\CardPayments;
  * @property string $externalInitialTransactionId
  * @property string $type
  * @property number $occurrence
+ * @property string $initialTransactionId
+ * @property string $externalInitialTransactionId
  */
 class StoredCredential extends \Paysafe\JSONObject
 {
@@ -24,6 +26,8 @@ class StoredCredential extends \Paysafe\JSONObject
         'occurrence' => array(
             'INITIAL',
             'SUBSEQUENT'
-        )
+        ),
+        'initialTransactionId' => 'string',
+        'externalInitialTransactionId' => 'string'
     );
 }
