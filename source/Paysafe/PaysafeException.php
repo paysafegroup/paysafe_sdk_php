@@ -22,6 +22,8 @@ namespace Paysafe;
 
 class PaysafeException extends \Exception
 {
+    public $rawResponse;
     public $fieldErrors;
     public $links;
+    public $details;
 }
