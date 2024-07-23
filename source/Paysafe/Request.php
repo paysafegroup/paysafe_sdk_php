@@ -152,6 +152,7 @@ class Request implements \ArrayAccess
 	 * @param string $offset
 	 * @return bool
 	 */
+    #[\ReturnTypeWillChange]
     public function offsetExists($offset)
     {
         return isset($this->body->$offset);
@@ -162,6 +163,7 @@ class Request implements \ArrayAccess
 	 * @param string $offset
 	 * @param bool $value
 	 */
+    #[\ReturnTypeWillChange]
     public function offsetSet($offset, $value)
     {
         $this->body->$offset = $value;
@@ -172,6 +174,7 @@ class Request implements \ArrayAccess
 	 * @param string $offset
 	 * @return mixed
 	 */
+    #[\ReturnTypeWillChange]
     public function offsetGet($offset)
     {
         return $this->body->$offset;
@@ -181,6 +184,7 @@ class Request implements \ArrayAccess
 	 * Magic unsetter for $this->body->{$offset}.
 	 * @param string $offset
 	 */
+    #[\ReturnTypeWillChange]
     public function offsetUnset($offset)
     {
         unset($this->body->$offset);
