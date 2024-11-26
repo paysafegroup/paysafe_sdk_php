@@ -642,9 +642,7 @@ class CustomerVaultService
             'uri' => $this->prepareURI("/profiles/" . $profile->id . "/achbankaccounts/" . $bankDetails->id),
             'body' => $profile
         ));
-        print_r($request);
         $response = $this->client->processRequest($request);
-        print_r($response);
         return new CustomerVault\ACHBankaccounts($response);
     }
 
