@@ -24,7 +24,7 @@ namespace Paysafe\CustomerVault;
  * @property string $id
  * @property string $status
  * @property string $merchantCustomerId
- * @property string $local
+ * @property string $locale
  * @property string $firstName
  * @property string $middleName
  * @property string $lastName
