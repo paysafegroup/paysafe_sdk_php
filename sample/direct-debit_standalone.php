@@ -211,6 +211,7 @@ if ($_POST) {
         var_dump($e->getMessage());
     }
 }
+require_once('escape.php');
 ?>
 <!DOCTYPE html>
 <html>
@@ -503,3 +504,4 @@ if (isset($_POST['city'])) {
         </form>
     </body>
 </html>
+

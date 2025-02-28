@@ -534,6 +534,7 @@ if ($_POST)
         }
     }
 
+require_once('escape.php');
 ?>
 <!DOCTYPE html>
 <html>
