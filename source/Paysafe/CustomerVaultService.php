@@ -217,6 +217,66 @@ class CustomerVaultService
 
         return new CustomerVault\Profile($response);
     }
+    
+    /**
+     * Get the profile by merchant customer id.
+     *
+     * @param \Paysafe\CustomerVault\Profile $profile
+     * @param bool $includeAddresses
+     * @param bool $includeCards
+     * @param bool $includeachbankaccount
+     * @param bool $includeeftbankaccount
+     * @param bool $includebacsbankaccount
+     * @param bool $includesepabankaccount
+     * @return bool
+     * @throws PaysafeException
+     */
+    public function getProfileCustomerId( CustomerVault\Profile $profile, $includeAddresses = false, $includeCards = false, $includeachbankaccount = false, $includeeftbankaccount = false, $includebacsbankaccount = false, $includesepabankaccount = false )
+    {
+        $profile->setRequiredFields(array('merchantCustomerId'));
+        $profile->checkRequiredFields();
+
+        $fields = array();
+        if ($includeAddresses)
+        {
+            $fields[] = 'addresses';
+        }
+        if ($includeCards)
+        {
+            $fields[] = 'cards';
+        }
+        if ($includeachbankaccount)
+        {
+            $fields[] = 'achbankaccounts';
+        }
+        if ($includeeftbankaccount)
+        {
+            $fields[] = 'eftbankaccounts';
+        }
+        if ($includebacsbankaccount)
+        {
+            $fields[] = 'bacsbankaccounts';
+        }
+        if ($includesepabankaccount)
+        {
+            $fields[] = 'sepabankaccounts';
+        }
+
+        $queryStr = array();
+        if ($fields)
+        {
+            $queryStr['fields'] = join(',', $fields);
+        }
+
+        $request = new Request(array(
+            'method' => Request::GET,
+            'uri' => $this->prepareURI("/profiles?merchantCustomerId=" . $profile->merchantCustomerId),
+            'queryStr' => $queryStr
+        ));
+        $response = $this->client->processRequest($request);
+
+        return new CustomerVault\Profile($response);
+    }
 
     /**
      * Create address.
@@ -420,6 +480,35 @@ class CustomerVaultService
             'holderName',
             'billingAddressId',
             'defaultCardIndicator',
+        ));
+
+        $request = new Request(array(
+            'method' => Request::PUT,
+            'uri' => $this->prepareURI("/profiles/" . $card->profileID . "/cards/" . $card->id),
+            'body' => $card
+        ));
+        $response = $this->client->processRequest($request);
+        $response['profileID'] = $card->profileID;
+
+        return new CustomerVault\Card($response);
+    }
+    
+    /**
+     * Update card from single use token.
+     *
+     * @param \Paysafe\CustomerVault\Card $card
+     * @return \Paysafe\CustomerVault\Card
+     * @throws PaysafeException
+     */
+    public function updateCardFromSingleUseToken( CustomerVault\Card $card )
+    {
+        $card->setRequiredFields(array(
+            'profileID',
+            'id'
+        ));
+        $card->checkRequiredFields();
+        $card->setRequiredFields(array(
+            'singleUseToken',
         ));
 
         $request = new Request(array(
