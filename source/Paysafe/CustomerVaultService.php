@@ -168,7 +168,7 @@ class CustomerVaultService
      * @param bool $includeeftbankaccount
      * @param bool $includebacsbankaccount
      * @param bool $includesepabankaccount
-     * @return bool
+     * @return \Paysafe\CustomerVault\Profile
      * @throws PaysafeException
      */
     public function getProfile( CustomerVault\Profile $profile, $includeAddresses = false, $includeCards = false, $includeachbankaccount = false, $includeeftbankaccount = false, $includebacsbankaccount = false, $includesepabankaccount = false )
@@ -318,7 +318,7 @@ class CustomerVaultService
      * Get the address.
      *
      * @param \Paysafe\CustomerVault\Address $address
-     * @return bool
+     * @return \Paysafe\CustomerVault\Address
      * @throws PaysafeException
      */
     public function getAddress( CustomerVault\Address $address )
@@ -461,7 +461,7 @@ class CustomerVaultService
      * Get the card.
      *
      * @param \Paysafe\CustomerVault\Card $card
-     * @return bool
+     * @return \Paysafe\CustomerVault\Card
      * @throws PaysafeException
      */
     public function getCard( CustomerVault\Card $card )
@@ -736,7 +736,7 @@ class CustomerVaultService
             'billingAddressId',
             'accountType'
         ));
-        $bankDetails->checkRequiredFields();        
+        $bankDetails->checkRequiredFields();
         $bankDetails->setOptionalFields(array(
             'nickName',
             'merchantRefNum',
@@ -882,7 +882,7 @@ class CustomerVaultService
      */
     public function deleteEFTBankAccount( CustomerVault\Profile $profile, CustomerVault\EFTBankaccounts $bankDetails )
     {
-        
+
         $bankDetails->setRequiredFields(array('id'));
 		$bankDetails->checkRequiredFields();
         $profile->setRequiredFields(array('id'));
@@ -950,7 +950,7 @@ class CustomerVaultService
              'reference'
         ));
         $mandates->checkRequiredFields();
-        
+
            $request = new Request(array(
              'method' => Request::POST,
              'uri' => $this->prepareURI("/profiles/" . $mandates->profileID."/".$bankaccounts."/".$mandates->bankAccountId."/mandates"),
@@ -959,7 +959,7 @@ class CustomerVaultService
 
         $response = $this->client->processRequest($request);
         return new CustomerVault\Mandates($response);
-        
+
     }
        /**
          * Process Look Up a Mandates
@@ -967,9 +967,9 @@ class CustomerVaultService
          * @return \Paysafe\CustomerVault\Mandates
          * @throws PaysafeException
          */
-    
+
      public function getMandates(CustomerVault\Mandates $mandates) {
-      
+
         $mandates->setRequiredFields(array(
              'id'
         ));
@@ -981,7 +981,7 @@ class CustomerVaultService
             ));
         $response = $this->client->processRequest($request);
         return new CustomerVault\Mandates($response);
-        
+
     }
     /**
          * Process Update a Mandates
@@ -990,9 +990,9 @@ class CustomerVaultService
          * @throws PaysafeException
          */
     public function updateMandates(CustomerVault\Mandates $mandates) {
-     
+
         $mandates->setRequiredFields(array(
-             'status' 
+             'status'
         ));
         $mandates->checkRequiredFields();
         $request = new Request(array(
@@ -1000,12 +1000,12 @@ class CustomerVaultService
              'uri' => $this->prepareURI("/profiles/" . $mandates->profileID."/mandates/".$mandates->id)
             ,'body' => $mandates
             ));
-        
+
         $response = $this->client->processRequest($request);
         return new CustomerVault\Mandates($response);
-        
+
     }
-    
+
         /**
          * Process Delete a Mandates
          * @param \Paysafe\CustomerVault\Mandate $mandates
@@ -1020,6 +1020,6 @@ class CustomerVaultService
             ));
         $response = $this->client->processRequest($request);
         return $response;
-        
+
     }
 }
